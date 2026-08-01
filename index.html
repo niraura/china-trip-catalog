@@ -270,27 +270,7 @@
   .star.locked, .star:disabled { opacity:.45; cursor:default; }
   .star.locked:hover, .star:disabled:hover { color:var(--ink-faint); }
   .star[aria-pressed="true"].locked { color:var(--vermilion); }
-  .carrybtns button:disabled { opacity:.4; cursor:default; }
-  .carrybtns button:disabled:hover { border-color:var(--line); color:var(--ink-soft); }
 
-  /* ---------- ☆の持ち出し ---------- */
-  .carry { padding:14px 0 0; display:flex; flex-direction:column; gap:8px; }
-  .carrynote { margin:0; font-size:12.5px; color:var(--ink-soft); line-height:1.65; max-width:70ch; }
-  .carrynote.warn { color:var(--vermilion); }
-  #carryText {
-    width:100%; min-height:110px; resize:vertical; box-sizing:border-box;
-    font-family:var(--font-mono); font-size:12px; line-height:1.7; padding:10px;
-    border:1px solid var(--line); border-radius:2px; background:var(--card); color:var(--ink);
-  }
-  .carrybtns { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
-  .carrybtns button {
-    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em; padding:8px 12px;
-    cursor:pointer; border:1px solid var(--line); border-radius:2px;
-    background:var(--card); color:var(--ink-soft);
-  }
-  .carrybtns button:hover { border-color:var(--ink-faint); color:var(--ink); }
-  #carryMsg { font-family:var(--font-mono); font-size:11.5px; color:var(--celadon); }
-  .favbtn.warn { border-color:var(--vermilion); color:var(--vermilion); }
 
   .hidden { display:none !important; }
   :focus-visible { outline:2px solid var(--vermilion); outline-offset:2px; }
@@ -348,23 +328,9 @@
     <button id="vMap" aria-pressed="false">位置関係</button>
   </div>
   <button id="favOnly" class="favbtn" aria-pressed="false">☆ のみ</button>
-  <button id="carryBtn" class="favbtn" aria-pressed="false">☆ の控え</button>
+  <button id="shareBtn" class="favbtn">選択をURLにする</button>
   <span class="count"><b id="shown">150</b> / 150 件</span>
   <button id="reset" class="reset">リセット</button>
-</div>
-
-<div class="carry hidden" id="carry">
-  <p class="carrynote" id="carryNote"></p>
-  <textarea id="carryText" spellcheck="false" aria-label="☆を付けた体験の一覧"></textarea>
-  <div class="carrybtns">
-    <button id="carryUrl">選択をURLにする</button>
-    <button id="carrySave">ファイルに保存</button>
-    <button id="carryLoad">ファイルから復元</button>
-    <button id="carryCopy">コピー</button>
-    <button id="carryApply">この内容で☆を置き換える</button>
-    <input type="file" id="carryFile" accept=".txt,text/plain" hidden>
-    <span id="carryMsg"></span>
-  </div>
 </div>
 
 <div class="filters" id="filters">
@@ -1294,16 +1260,6 @@ const STORE_OK = (() => {
   try { localStorage.setItem("__probe", "1"); localStorage.removeItem("__probe"); return true; }
   catch (e) { return false; }
 })();
-/* 埋め込み表示か。Safari は埋め込み内のストレージを一時区画に隔離し、閉じると捨てる */
-const EMBEDDED = (() => { try { return window.top !== window.self; } catch (e) { return true; } })();
-/* 前回のセッションで書いた目印が生きていれば、保存が本当に残ると確認できる */
-const PERSIST_PROVEN = (() => {
-  try {
-    if (localStorage.getItem("cn-dec-beacon")) return true;
-    localStorage.setItem("cn-dec-beacon", String(Date.now()));
-  } catch (e) {}
-  return false;
-})();
 /* ---------- ☆をURLに載せる ----------
    並び順に対するビットマップ＋版ハッシュ。版が違う古いリンクは適用しない。 */
 function fnv1a(str) {
@@ -1465,7 +1421,7 @@ function render() {
     document.getElementById("tbody").innerHTML = rows.map(d => `
       <tr>
         <td><button class="star${readOnly ? ' locked' : ''}" data-id="${d.id}" aria-pressed="${favs.has(d.id)}" ${readOnly ? "disabled" : ""} aria-label="${readOnly ? '共有リンク閲覧中は変更できません' : '気になるに追加'}">${favs.has(d.id) ? "★" : "☆"}</button></td>
-        <td class="nm">${d.n}<br><span style="font-size:11.5px;color:var(--ink-faint)">${d.copy}</span></td>
+        <td class="nm">${d.n}</td>
         <td class="num">${d.area}</td>
         <td class="num">${d.kind.join("・")}</td>
         <td class="num">${d.dec}</td>
@@ -1486,7 +1442,6 @@ function render() {
     };
   });
 
-  syncCarry();
 }
 
 /* ---------- map ---------- */
@@ -1541,112 +1496,29 @@ document.getElementById("reset").onclick = () => {
   favOnly = false; document.getElementById("favOnly").setAttribute("aria-pressed","false");
   render();
 };
-/* ---------- ☆の控え（保存が効かない環境の逃げ道） ---------- */
-const carry = document.getElementById("carry");
-const carryText = document.getElementById("carryText");
-const carryNote = document.getElementById("carryNote");
-const carryMsg = document.getElementById("carryMsg");
-const carryBtn = document.getElementById("carryBtn");
 
-/* 保存が残ると確認できていないうちは、控えを取るよう促す */
-const KEEP = "下のファイル保存かコピー";
-const RISKY = !STORE_OK || !PERSIST_PROVEN;
-carryNote.textContent =
-  !STORE_OK
-    ? "このブラウザは☆の保存自体を拒否しています。タブを閉じると消えるので、" + KEEP + "で控えてください。"
-  : !PERSIST_PROVEN
-    ? (EMBEDDED
-        ? "☆がタブを閉じたあとも残るか、まだ確認できていません。このページは埋め込み表示で、Safari では埋め込み内の保存がタブを閉じた時点で破棄されます。確実に残すには、" + KEEP + "で控えるか、このページを別タブで直接開いてください。"
-        : "☆がタブを閉じたあとも残るか、まだ確認できていません。一度閉じて開き直すと確認できます。それまでは" + KEEP + "で控えておくと安全です。")
-    : "☆はこのブラウザに保存されており、タブを閉じても残ることを確認済みです。別の端末やブラウザに移すときは、" + KEEP + "を使ってください。";
-carryNote.classList.toggle("warn", RISKY);
-if (RISKY) carryBtn.classList.add("warn");
-
-function syncCarry() {
-  if (carry.classList.contains("hidden")) return;
-  if (document.activeElement === carryText) return;   // 編集中は上書きしない
-  carryText.value = DATA.filter(d => favs.has(d.id)).map(d => d.n).join("\n");
+/* ---------- 選択をURLにして渡す ---------- */
+const shareBtn = document.getElementById("shareBtn");
+const SHARE_LABEL = shareBtn.textContent;
+let shareTimer = null;
+function flashShare(msg) {
+  clearTimeout(shareTimer);
+  shareBtn.textContent = msg;
+  shareTimer = setTimeout(() => { shareBtn.textContent = SHARE_LABEL; }, 2400);
 }
-carryBtn.onclick = () => {
-  const open = !carry.classList.toggle("hidden");
-  carryBtn.setAttribute("aria-pressed", open);
-  carryMsg.textContent = "";
-  syncCarry();
-};
-/* ファイルに保存（サンドボックス外なので通常のダウンロードが使える） */
-const carrySave = document.getElementById("carrySave");
-carrySave.onclick = () => {
-  if (!carryText.value.trim()) { carryMsg.textContent = "☆がまだ付いていません"; return; }
-  const url = URL.createObjectURL(new Blob([carryText.value + "\n"], { type: "text/plain;charset=utf-8" }));
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "中国旅行_気になる体験.txt";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  carryMsg.textContent = "保存しました";
-};
-
-/* ファイルから復元 */
-const carryFile = document.getElementById("carryFile");
-document.getElementById("carryLoad").onclick = () => carryFile.click();
-carryFile.onchange = () => {
-  const f = carryFile.files && carryFile.files[0];
-  if (!f) return;
-  const r = new FileReader();
-  r.onload = () => {
-    carryText.value = String(r.result || "").trim();
-    document.getElementById("carryApply").onclick();
-  };
-  r.onerror = () => { carryMsg.textContent = "ファイルを読めませんでした"; };
-  r.readAsText(f);
-  carryFile.value = "";
-};
-
-/* 選択をURLにして渡す */
-document.getElementById("carryUrl").onclick = async () => {
-  if (!favs.size) { carryMsg.textContent = "☆がまだ付いていません"; return; }
+shareBtn.onclick = async () => {
+  if (!favs.size) { flashShare("☆がありません"); return; }
   const url = location.origin + location.pathname + "#f=" + encodeFavs();
   try {
     await navigator.clipboard.writeText(url);
-    carryMsg.textContent = "URLをコピーしました。相手に送れば同じ☆が開きます";
+    flashShare("URLをコピーしました");
   } catch (e) {
-    carryText.value = url;
-    carryText.select();
-    carryMsg.textContent = "上の欄にURLを出しました。⌘Cでコピーしてください";
+    banner("このURLを送ってください。<br>" + url, false);
   }
 };
 
-document.getElementById("carryCopy").onclick = async () => {
-  carryText.select();
-  try {
-    await navigator.clipboard.writeText(carryText.value);
-    carryMsg.textContent = "コピーしました";
-  } catch (e) {
-    carryMsg.textContent = "選択しました。⌘C でコピーしてください";
-  }
-};
-document.getElementById("carryApply").onclick = () => {
-  const names = new Set(DATA.map(d => d.n));
-  const lines = carryText.value.split("\n").map(v => v.trim()).filter(Boolean);
-  const picked = lines.filter(v => names.has(v));
-  const dropped = lines.length - picked.length;
-  favs = new Set(picked);
-  saveFavs();
-  render();
-  carryMsg.textContent = picked.length + "件を☆にしました" + (dropped ? "（一致しない" + dropped + "行は無視）" : "");
-};
-
-/* 保存を伴う操作をまとめて止める／戻す */
-function lockWrites(on) {
-  ["carryApply", "carryLoad"].forEach(id => {
-    const b = document.getElementById(id);
-    if (!b) return;
-    b.disabled = on;
-    b.title = on ? "共有リンクの閲覧中は使えません" : "";
-  });
-}
+/* 保存そのものが拒否される環境でだけ知らせる */
+if (!STORE_OK) banner("このブラウザでは☆を保存できません。タブを閉じると消えます。", true);
 
 /* 共有リンクで開かれたときは閲覧専用にする。
    このブラウザに保存された☆は、読み替えも書き換えもしない。 */
@@ -1664,7 +1536,6 @@ function lockWrites(on) {
   localFavs = new Set(favs);
   favs = new Set(r);
   readOnly = true;
-  lockWrites(true);
 
   banner(
     "共有された☆を表示しています（" + r.length + "件）。☆の付け外しはできません。" +
@@ -1674,7 +1545,6 @@ function lockWrites(on) {
     readOnly = false;
     favs = new Set(localFavs);
     localFavs = null;
-    lockWrites(false);
     try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
     render();
     document.getElementById("banner").classList.add("hidden");   // 戻ったら帯ごと消す
