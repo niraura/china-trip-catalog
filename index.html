@@ -260,6 +260,13 @@
     background:var(--celadon-bg); color:var(--celadon);
   }
   .banner.warn { background:var(--verm-bg); color:var(--vermilion); }
+  .bnrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:9px; }
+  .bnbtn {
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em; padding:6px 11px;
+    cursor:pointer; border:1px solid currentColor; border-radius:2px;
+    background:transparent; color:inherit;
+  }
+  .bnbtn:hover { background:var(--card); }
 
   /* ---------- ☆の持ち出し ---------- */
   .carry { padding:14px 0 0; display:flex; flex-direction:column; gap:8px; }
@@ -1327,11 +1334,12 @@ function syncHash() {
     history.replaceState(null, "", location.pathname + location.search + (favs.size ? "#f=" + encodeFavs() : ""));
   } catch (e) {}
 }
-function banner(text, isWarn) {
+function banner(html, isWarn) {
   const el = document.getElementById("banner");
-  el.textContent = text;
+  el.innerHTML = html;   // 差し込むのは自前の文字列のみ。URLの中身は入れない
   el.classList.toggle("warn", !!isWarn);
   el.classList.remove("hidden");
+  return el;
 }
 
 /* ☆の識別子はカード名。並び順が変わっても控えが壊れないようにする */
@@ -1618,7 +1626,8 @@ document.getElementById("carryApply").onclick = () => {
   carryMsg.textContent = picked.length + "件を☆にしました" + (dropped ? "（一致しない" + dropped + "行は無視）" : "");
 };
 
-/* 共有リンクで開かれたときは、そちらの☆を採用する */
+/* 共有リンクで開かれたとき。
+   すでに自分の☆がある場合は、勝手に上書きせず選ばせる。 */
 (function readShared() {
   const m = /[#?&]f=([^&]+)/.exec(location.hash + "&" + location.search.slice(1));
   if (!m) return;
@@ -1627,10 +1636,47 @@ document.getElementById("carryApply").onclick = () => {
     banner("この共有リンクは古い版のものです。候補の一覧が更新されているため、☆は変更していません。", true);
     return;
   }
-  if (!r) { banner("共有リンクを読み取れませんでした。", true); return; }
-  favs = new Set(r);
-  saveFavs();
-  banner("共有リンクから " + r.length + " 件の☆を読み込みました。このブラウザに保存済みです。", false);
+  if (!r) { banner("共有リンクを読み取れませんでした。☆は変更していません。", true); return; }
+
+  const mine = new Set(favs);   // 元の状態。いつでも戻せるよう抱えておく
+
+  function apply(next, label) {
+    favs = next;
+    saveFavs();
+    render();
+    banner(label + '<span class="bnrow"><button class="bnbtn" id="bnUndo">元に戻す</button></span>', false);
+    document.getElementById("bnUndo").onclick = () => {
+      favs = new Set(mine);
+      saveFavs();
+      render();
+      banner("元の☆（" + mine.size + "件）に戻しました。", false);
+    };
+  }
+
+  if (mine.size === 0) {   // 失うものがないので、そのまま反映
+    apply(new Set(r), "共有リンクから " + r.length + " 件の☆を読み込みました。このブラウザに保存しました。");
+    return;
+  }
+
+  banner(
+    "共有リンクに " + r.length + " 件の☆が入っています。ただしこのブラウザには、すでに自分の☆が " + mine.size + " 件あります。" +
+    "どうするか選んでください。選ぶまでは何も変更しません。" +
+    '<span class="bnrow">' +
+      '<button class="bnbtn" id="bnMerge">自分の☆に足す</button>' +
+      '<button class="bnbtn" id="bnReplace">自分の☆を置き換える</button>' +
+      '<button class="bnbtn" id="bnKeep">自分の☆のままにする</button>' +
+    '</span>', true);
+
+  document.getElementById("bnMerge").onclick = () => {
+    const u = new Set(mine);
+    r.forEach(x => u.add(x));
+    apply(u, "足しました。合計 " + u.size + " 件になりました。");
+  };
+  document.getElementById("bnReplace").onclick = () =>
+    apply(new Set(r), "置き換えました。共有された " + r.length + " 件になりました。");
+  document.getElementById("bnKeep").onclick = () => {
+    banner("自分の☆（" + mine.size + "件）をそのままにしました。共有された☆は取り込んでいません。", false);
+  };
 })();
 
 const views = { vCard:"card", vTable:"table", vMap:"map" };
