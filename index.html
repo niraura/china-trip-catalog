@@ -267,6 +267,11 @@
     background:transparent; color:inherit;
   }
   .bnbtn:hover { background:var(--card); }
+  .star.locked, .star:disabled { opacity:.45; cursor:default; }
+  .star.locked:hover, .star:disabled:hover { color:var(--ink-faint); }
+  .star[aria-pressed="true"].locked { color:var(--vermilion); }
+  .carrybtns button:disabled { opacity:.4; cursor:default; }
+  .carrybtns button:disabled:hover { border-color:var(--line); color:var(--ink-soft); }
 
   /* ---------- ☆の持ち出し ---------- */
   .carry { padding:14px 0 0; display:flex; flex-direction:column; gap:8px; }
@@ -1330,6 +1335,7 @@ function decodeFavs(token) {
 }
 /* ☆が変わるたびアドレスにも反映する。ブックマークでそのまま持ち運べる */
 function syncHash() {
+  if (readOnly) return;   // 共有リンクのURLを自分の☆で書き換えない
   try {
     history.replaceState(null, "", location.pathname + location.search + (favs.size ? "#f=" + encodeFavs() : ""));
   } catch (e) {}
@@ -1353,10 +1359,15 @@ function loadFavs() {
   } catch (e) { return new Set(); }
 }
 function saveFavs() {
+  if (readOnly) return;   // 共有リンク閲覧中は保存経路を完全に塞ぐ
   try { localStorage.setItem("cn-dec-favs", JSON.stringify([...favs])); } catch (e) {}
   syncHash();
 }
 let favs = loadFavs();
+/* 共有リンクを開いているあいだは読み取り専用。
+   このブラウザに保存された☆には、一切手を触れない。 */
+let readOnly = false;
+let localFavs = null;   // 読み取り専用のあいだ、退避しておく自分の☆
 let favOnly = false, view = "card", sortKey = null, sortDir = 1;
 
 VERSION = fnv1a(DATA.map(d => d.n).join("\n")).toString(36);
@@ -1423,7 +1434,7 @@ function render() {
         <div class="card-top">
           <span class="dec ${decClass(d.dec)}" title="12月適性">${d.dec}</span>
           <span class="area">${d.area}${d.loc ? " · " + d.loc : ""}</span>
-          <button class="star" data-id="${d.id}" aria-pressed="${favs.has(d.id)}" aria-label="気になるに追加">${favs.has(d.id) ? "★" : "☆"}</button>
+          <button class="star${readOnly ? ' locked' : ''}" data-id="${d.id}" aria-pressed="${favs.has(d.id)}" ${readOnly ? "disabled" : ""} aria-label="${readOnly ? '共有リンク閲覧中は変更できません' : '気になるに追加'}">${favs.has(d.id) ? "★" : "☆"}</button>
         </div>
         <h3>${d.n}</h3>
         <p class="copy">${d.copy}</p>
@@ -1453,7 +1464,7 @@ function render() {
     }
     document.getElementById("tbody").innerHTML = rows.map(d => `
       <tr>
-        <td><button class="star" data-id="${d.id}" aria-pressed="${favs.has(d.id)}" aria-label="気になるに追加">${favs.has(d.id) ? "★" : "☆"}</button></td>
+        <td><button class="star${readOnly ? ' locked' : ''}" data-id="${d.id}" aria-pressed="${favs.has(d.id)}" ${readOnly ? "disabled" : ""} aria-label="${readOnly ? '共有リンク閲覧中は変更できません' : '気になるに追加'}">${favs.has(d.id) ? "★" : "☆"}</button></td>
         <td class="nm">${d.n}<br><span style="font-size:11.5px;color:var(--ink-faint)">${d.copy}</span></td>
         <td class="num">${d.area}</td>
         <td class="num">${d.kind.join("・")}</td>
@@ -1467,6 +1478,7 @@ function render() {
 
   document.querySelectorAll(".star").forEach(s => {
     s.onclick = () => {
+      if (readOnly) return;   // 二重の歯止め
       const id = s.dataset.id;
       if (favs.has(id)) favs.delete(id); else favs.add(id);
       saveFavs();
@@ -1626,8 +1638,18 @@ document.getElementById("carryApply").onclick = () => {
   carryMsg.textContent = picked.length + "件を☆にしました" + (dropped ? "（一致しない" + dropped + "行は無視）" : "");
 };
 
-/* 共有リンクで開かれたとき。
-   すでに自分の☆がある場合は、勝手に上書きせず選ばせる。 */
+/* 保存を伴う操作をまとめて止める／戻す */
+function lockWrites(on) {
+  ["carryApply", "carryLoad"].forEach(id => {
+    const b = document.getElementById(id);
+    if (!b) return;
+    b.disabled = on;
+    b.title = on ? "共有リンクの閲覧中は使えません" : "";
+  });
+}
+
+/* 共有リンクで開かれたときは閲覧専用にする。
+   このブラウザに保存された☆は、読み替えも書き換えもしない。 */
 (function readShared() {
   const m = /[#?&]f=([^&]+)/.exec(location.hash + "&" + location.search.slice(1));
   if (!m) return;
@@ -1638,45 +1660,30 @@ document.getElementById("carryApply").onclick = () => {
   }
   if (!r) { banner("共有リンクを読み取れませんでした。☆は変更していません。", true); return; }
 
-  const mine = new Set(favs);   // 元の状態。いつでも戻せるよう抱えておく
-
-  function apply(next, label) {
-    favs = next;
-    saveFavs();
-    render();
-    banner(label + '<span class="bnrow"><button class="bnbtn" id="bnUndo">元に戻す</button></span>', false);
-    document.getElementById("bnUndo").onclick = () => {
-      favs = new Set(mine);
-      saveFavs();
-      render();
-      banner("元の☆（" + mine.size + "件）に戻しました。", false);
-    };
-  }
-
-  if (mine.size === 0) {   // 失うものがないので、そのまま反映
-    apply(new Set(r), "共有リンクから " + r.length + " 件の☆を読み込みました。このブラウザに保存しました。");
-    return;
-  }
+  /* 表示だけを共有された☆に差し替える。保存領域は読まれも書かれもしない */
+  localFavs = new Set(favs);
+  favs = new Set(r);
+  readOnly = true;
+  lockWrites(true);
 
   banner(
-    "共有リンクに " + r.length + " 件の☆が入っています。ただしこのブラウザには、すでに自分の☆が " + mine.size + " 件あります。" +
-    "どうするか選んでください。選ぶまでは何も変更しません。" +
-    '<span class="bnrow">' +
-      '<button class="bnbtn" id="bnMerge">自分の☆に足す</button>' +
-      '<button class="bnbtn" id="bnReplace">自分の☆を置き換える</button>' +
-      '<button class="bnbtn" id="bnKeep">自分の☆のままにする</button>' +
-    '</span>', true);
+    "共有された☆を表示しています（" + r.length + "件）。<b>この画面は閲覧専用です。</b>" +
+    "☆の付け外しはできません。" +
+    (localFavs.size
+      ? "このブラウザに保存されている自分の☆（" + localFavs.size + "件）には一切触れていません。"
+      : "このブラウザにはまだ自分の☆がありません。") +
+    '<span class="bnrow"><button class="bnbtn" id="bnMine">自分の☆に戻る</button></span>', true);
 
-  document.getElementById("bnMerge").onclick = () => {
-    const u = new Set(mine);
-    r.forEach(x => u.add(x));
-    apply(u, "足しました。合計 " + u.size + " 件になりました。");
+  document.getElementById("bnMine").onclick = () => {
+    readOnly = false;
+    favs = new Set(localFavs);
+    localFavs = null;
+    lockWrites(false);
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+    render();
+    banner("自分の☆（" + favs.size + "件）に戻りました。ここからは付け外しと保存ができます。", false);
   };
-  document.getElementById("bnReplace").onclick = () =>
-    apply(new Set(r), "置き換えました。共有された " + r.length + " 件になりました。");
-  document.getElementById("bnKeep").onclick = () => {
-    banner("自分の☆（" + mine.size + "件）をそのままにしました。共有された☆は取り込んでいません。", false);
-  };
+  render();
 })();
 
 const views = { vCard:"card", vTable:"table", vMap:"map" };
