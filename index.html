@@ -1667,11 +1667,7 @@ function lockWrites(on) {
   lockWrites(true);
 
   banner(
-    "共有された☆を表示しています（" + r.length + "件）。<b>この画面は閲覧専用です。</b>" +
-    "☆の付け外しはできません。" +
-    (localFavs.size
-      ? "このブラウザに保存されている自分の☆（" + localFavs.size + "件）には一切触れていません。"
-      : "このブラウザにはまだ自分の☆がありません。") +
+    "共有された☆を表示しています（" + r.length + "件）。☆の付け外しはできません。" +
     '<span class="bnrow"><button class="bnbtn" id="bnMine">自分の☆に戻る</button></span>', true);
 
   document.getElementById("bnMine").onclick = () => {
