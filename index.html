@@ -1323,13 +1323,9 @@ function decodeFavs(token) {
   });
   return picked;
 }
-/* ☆が変わるたびアドレスにも反映する。ブックマークでそのまま持ち運べる */
-function syncHash() {
-  if (readOnly) return;   // 共有リンクのURLを自分の☆で書き換えない
-  try {
-    history.replaceState(null, "", location.pathname + location.search + (favs.size ? "#f=" + encodeFavs() : ""));
-  } catch (e) {}
-}
+/* URLへは自動で書き込まない。
+   自分の☆でハッシュを付けると、再読み込み時に自分の共有リンクとして
+   読み込まれてしまうため。ハッシュは「共有」を押したときだけ組み立てる。 */
 function banner(html, isWarn) {
   const el = document.getElementById("banner");
   el.innerHTML = html;   // 差し込むのは自前の文字列のみ。URLの中身は入れない
@@ -1351,7 +1347,6 @@ function loadFavs() {
 function saveFavs() {
   if (readOnly) return;   // 共有リンク閲覧中は保存経路を完全に塞ぐ
   try { localStorage.setItem("cn-dec-favs", JSON.stringify([...favs])); } catch (e) {}
-  syncHash();
 }
 let favs = loadFavs();
 /* 共有リンクを開いているあいだは読み取り専用。
