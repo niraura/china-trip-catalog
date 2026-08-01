@@ -1677,7 +1677,7 @@ function lockWrites(on) {
     lockWrites(false);
     try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
     render();
-    banner("自分の☆（" + favs.size + "件）に戻りました。ここからは付け外しと保存ができます。", false);
+    document.getElementById("banner").classList.add("hidden");   // 戻ったら帯ごと消す
   };
   render();
 })();
