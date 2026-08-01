@@ -95,6 +95,28 @@
     font-family:var(--font-mono); font-size:12px; color:var(--ink-soft);
     font-variant-numeric:tabular-nums; white-space:nowrap;
   }
+  /* 共有だけは外向きの操作なので、右端に離して主役の色を当てる */
+  .sharewrap { position:relative; margin-left:auto; }
+  .sharebtn {
+    display:flex; align-items:center; gap:6px;
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.08em;
+    padding:8px 15px; border:1px solid var(--vermilion); border-radius:2px;
+    background:var(--vermilion); color:#fff; cursor:pointer;
+  }
+  .sharebtn:hover { filter:brightness(1.1); }
+  .sharebtn svg { flex:none; }
+  .sharemenu {
+    position:absolute; right:0; top:calc(100% + 6px); z-index:30;
+    display:flex; flex-direction:column; min-width:176px;
+    background:var(--card); border:1px solid var(--line); border-radius:2px;
+    box-shadow:var(--shadow); overflow:hidden;
+  }
+  .sharemenu button {
+    font-family:var(--font-body); font-size:13px; text-align:left; white-space:nowrap;
+    padding:11px 14px; border:0; background:transparent; color:var(--ink); cursor:pointer;
+  }
+  .sharemenu button + button { border-top:1px solid var(--line-soft); }
+  .sharemenu button:hover { background:var(--card-2); }
   .count b { color:var(--vermilion); font-size:15px; }
   .reset {
     font-family:var(--font-mono); font-size:11.5px; padding:8px 10px;
@@ -288,7 +310,8 @@
     .search input { padding:10px 0; font-size:16px; } /* iOSの自動ズーム防止に16px */
     .seg button { padding:9px 10px; }
     .favbtn { padding:9px 10px; }
-    .count { font-size:11px; margin-left:auto; }
+    .count { font-size:11px; }
+    .sharebtn { padding:9px 13px; }
     .reset { padding:9px 4px; }
     /* 指で押せる大きさを確保 */
     .chip { padding:7px 13px; font-size:13px; }
@@ -328,7 +351,17 @@
     <button id="vMap" aria-pressed="false">位置関係</button>
   </div>
   <button id="favOnly" class="favbtn" aria-pressed="false">☆ のみ</button>
-  <button id="shareBtn" class="favbtn">選択をURLにする</button>
+  <div class="sharewrap">
+    <button id="shareBtn" class="sharebtn" aria-haspopup="true" aria-expanded="false">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10.5V2"/><path d="M5 5l3-3 3 3"/><path d="M3 9v4.2a.8.8 0 00.8.8h8.4a.8.8 0 00.8-.8V9"/></svg>
+      <span id="shareLabel">共有</span>
+    </button>
+    <div class="sharemenu hidden" id="shareMenu" role="menu">
+      <button id="shareLine" role="menuitem">LINEで送る</button>
+      <button id="shareCopy" role="menuitem">URLをコピー</button>
+      <button id="shareOther" role="menuitem" class="hidden">その他のアプリ…</button>
+    </div>
+  </div>
   <span class="count"><b id="shown">150</b> / 150 件</span>
   <button id="reset" class="reset">リセット</button>
 </div>
@@ -1497,24 +1530,61 @@ document.getElementById("reset").onclick = () => {
   render();
 };
 
-/* ---------- 選択をURLにして渡す ---------- */
+/* ---------- 共有（☆を載せたURLを送る） ---------- */
 const shareBtn = document.getElementById("shareBtn");
-const SHARE_LABEL = shareBtn.textContent;
+const shareMenu = document.getElementById("shareMenu");
+const shareLabel = document.getElementById("shareLabel");
+const SHARE_LABEL = shareLabel.textContent;
 let shareTimer = null;
+
 function flashShare(msg) {
   clearTimeout(shareTimer);
-  shareBtn.textContent = msg;
-  shareTimer = setTimeout(() => { shareBtn.textContent = SHARE_LABEL; }, 2400);
+  shareLabel.textContent = msg;
+  shareTimer = setTimeout(() => { shareLabel.textContent = SHARE_LABEL; }, 2400);
 }
-shareBtn.onclick = async () => {
-  if (!favs.size) { flashShare("☆がありません"); return; }
-  const url = location.origin + location.pathname + "#f=" + encodeFavs();
+function shareUrl() {
+  return location.origin + location.pathname + "#f=" + encodeFavs();
+}
+function closeShareMenu() {
+  shareMenu.classList.add("hidden");
+  shareBtn.setAttribute("aria-expanded", "false");
+}
+if (typeof navigator !== "undefined" && navigator.share) {
+  document.getElementById("shareOther").classList.remove("hidden");
+}
+
+shareBtn.onclick = e => {
+  e.stopPropagation();
+  if (!favs.size) { flashShare("☆がありません"); closeShareMenu(); return; }
+  const open = shareMenu.classList.toggle("hidden") === false;
+  shareBtn.setAttribute("aria-expanded", open ? "true" : "false");
+};
+shareMenu.onclick = e => e.stopPropagation();
+document.addEventListener("click", closeShareMenu);
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeShareMenu(); });
+
+document.getElementById("shareLine").onclick = () => {
+  const text = "中国旅行の候補地（☆" + favs.size + "件）\n" + shareUrl();
+  const line = "https://line.me/R/msg/text/?" + encodeURIComponent(text);
+  const w = window.open(line, "_blank", "noopener");
+  if (!w) location.href = line;   // 新規タブが塞がれた場合
+  closeShareMenu();
+};
+document.getElementById("shareCopy").onclick = async () => {
+  const url = shareUrl();
   try {
     await navigator.clipboard.writeText(url);
-    flashShare("URLをコピーしました");
+    flashShare("コピーしました");
   } catch (e) {
     banner("このURLを送ってください。<br>" + url, false);
   }
+  closeShareMenu();
+};
+document.getElementById("shareOther").onclick = async () => {
+  try {
+    await navigator.share({ title: "中国旅行の候補地", url: shareUrl() });
+  } catch (e) {}   // 取り消しても何もしない
+  closeShareMenu();
 };
 
 /* 保存そのものが拒否される環境でだけ知らせる */
