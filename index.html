@@ -1,0 +1,1659 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="12月の中国でできる体験150件。やりたいことから行き先を逆算するためのカタログ。">
+<title>中国旅行の候補地</title>
+<style>
+  :root {
+    --paper:#EDEFF1; --card:#FFFFFF; --card-2:#F6F8F9;
+    --ink:#16232E; --ink-soft:#55666F; --ink-faint:#8496A0;
+    --line:#CFD7DC; --line-soft:#E1E7EA;
+    --indigo:#1F4468; --vermilion:#C7442C; --celadon:#3F7A6B; --gamboge:#A9761F;
+    --indigo-bg:#E4EBF2; --celadon-bg:#E0EDE8; --gamboge-bg:#F4EBDA; --verm-bg:#F7E4E0;
+    --shadow:0 1px 2px rgba(22,35,46,.06), 0 8px 20px -12px rgba(22,35,46,.18);
+    --font-display:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Songti SC",serif;
+    --font-body:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+    --font-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:#0F1B24; --card:#17252F; --card-2:#1D2E39;
+      --ink:#E4EBEF; --ink-soft:#9BABB5; --ink-faint:#71838E;
+      --line:#2A3C47; --line-soft:#223440;
+      --indigo:#84B2D8; --vermilion:#EC7660; --celadon:#6FB69F; --gamboge:#D9A85A;
+      --indigo-bg:#1B3346; --celadon-bg:#193630; --gamboge-bg:#33291A; --verm-bg:#3A211C;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 20px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#0F1B24; --card:#17252F; --card-2:#1D2E39;
+    --ink:#E4EBEF; --ink-soft:#9BABB5; --ink-faint:#71838E;
+    --line:#2A3C47; --line-soft:#223440;
+    --indigo:#84B2D8; --vermilion:#EC7660; --celadon:#6FB69F; --gamboge:#D9A85A;
+    --indigo-bg:#1B3346; --celadon-bg:#193630; --gamboge-bg:#33291A; --verm-bg:#3A211C;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 20px -12px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"] {
+    --paper:#EDEFF1; --card:#FFFFFF; --card-2:#F6F8F9;
+    --ink:#16232E; --ink-soft:#55666F; --ink-faint:#8496A0;
+    --line:#CFD7DC; --line-soft:#E1E7EA;
+    --indigo:#1F4468; --vermilion:#C7442C; --celadon:#3F7A6B; --gamboge:#A9761F;
+    --indigo-bg:#E4EBF2; --celadon-bg:#E0EDE8; --gamboge-bg:#F4EBDA; --verm-bg:#F7E4E0;
+    --shadow:0 1px 2px rgba(22,35,46,.06), 0 8px 20px -12px rgba(22,35,46,.18);
+  }
+
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--font-body); font-size:15px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap { max-width:1180px; margin:0 auto; padding:0 20px 80px; }
+
+  /* ---------- header ---------- */
+  header.top { padding:44px 0 26px; border-bottom:1px solid var(--line); }
+  h1 {
+    font-family:var(--font-display); font-weight:600; font-size:clamp(30px,4.6vw,46px);
+    line-height:1.25; margin:0 0 14px; text-wrap:balance; letter-spacing:.01em;
+  }
+  h1 .accent { color:var(--vermilion); }
+  .lede { max-width:60ch; color:var(--ink-soft); margin:0; }
+
+  /* ---------- controls ---------- */
+  .controls {
+    position:sticky; top:0; z-index:20; background:var(--paper);
+    padding:14px 0 12px; border-bottom:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  }
+  .search {
+    flex:1 1 240px; min-width:180px; display:flex; align-items:center; gap:8px;
+    background:var(--card); border:1px solid var(--line); border-radius:2px; padding:0 10px;
+  }
+  .search input {
+    flex:1; border:0; background:transparent; color:var(--ink);
+    font-family:var(--font-body); font-size:14px; padding:9px 0; outline:none;
+  }
+  .search input::placeholder { color:var(--ink-faint); }
+  .search svg { flex:none; opacity:.5; }
+  .seg { display:flex; border:1px solid var(--line); border-radius:2px; overflow:hidden; background:var(--card); }
+  .seg button {
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.06em;
+    padding:8px 12px; border:0; background:transparent; color:var(--ink-soft); cursor:pointer;
+  }
+  .seg button + button { border-left:1px solid var(--line); }
+  .seg button[aria-pressed="true"] { background:var(--indigo); color:var(--card); }
+  .favbtn {
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.06em;
+    padding:8px 12px; border:1px solid var(--line); border-radius:2px;
+    background:var(--card); color:var(--ink-soft); cursor:pointer;
+  }
+  .favbtn[aria-pressed="true"] { background:var(--vermilion); border-color:var(--vermilion); color:#fff; }
+  .count {
+    font-family:var(--font-mono); font-size:12px; color:var(--ink-soft);
+    font-variant-numeric:tabular-nums; white-space:nowrap;
+  }
+  .count b { color:var(--vermilion); font-size:15px; }
+  .reset {
+    font-family:var(--font-mono); font-size:11.5px; padding:8px 10px;
+    background:transparent; border:1px solid transparent; color:var(--ink-faint);
+    cursor:pointer; text-decoration:underline; text-underline-offset:3px;
+  }
+  .reset:hover { color:var(--vermilion); }
+
+  /* ---------- filters ---------- */
+  .filters { padding:18px 0 6px; }
+  .fgroup { display:grid; grid-template-columns:78px 1fr; gap:10px 14px; margin-bottom:12px; align-items:start; }
+  .flabel {
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--ink-faint);
+    padding-top:6px; text-align:right;
+  }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip {
+    font-size:12.5px; padding:4px 11px; border-radius:20px; cursor:pointer;
+    border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    font-family:var(--font-body); line-height:1.6; transition:background .12s, color .12s, border-color .12s;
+  }
+  .chip:hover { border-color:var(--ink-faint); color:var(--ink); }
+  .chip[aria-pressed="true"] { background:var(--vermilion); border-color:var(--vermilion); color:#fff; }
+  .chip.k[aria-pressed="false"] { background:var(--indigo-bg); border-color:transparent; color:var(--indigo); }
+  .chip.a[aria-pressed="false"] { background:var(--celadon-bg); border-color:transparent; color:var(--celadon); }
+  .chip.m[aria-pressed="false"] { background:var(--gamboge-bg); border-color:transparent; color:var(--gamboge); }
+  details.more { margin-top:6px; }
+  details.more > summary {
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.08em; color:var(--ink-faint);
+    cursor:pointer; padding:6px 0 6px 92px; list-style:none;
+  }
+  details.more > summary::-webkit-details-marker { display:none; }
+  details.more > summary::before { content:"▸ "; }
+  details.more[open] > summary::before { content:"▾ "; }
+  details.more > summary:hover { color:var(--vermilion); }
+  .more-body { padding-top:8px; border-top:1px dashed var(--line); margin-top:4px; }
+
+  /* ---------- grid ---------- */
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; padding-top:22px; }
+  @media (max-width:940px) { .grid { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:640px) { .grid { grid-template-columns:1fr; } .fgroup { grid-template-columns:1fr; } .flabel { text-align:left; padding-top:0; } details.more > summary { padding-left:0; } }
+
+  article.card {
+    background:var(--card); border:1px solid var(--line-soft); border-radius:3px;
+    padding:16px 16px 13px; display:flex; flex-direction:column; gap:9px;
+    box-shadow:var(--shadow); position:relative;
+  }
+  .card-top { display:flex; align-items:center; gap:8px; }
+  .dec {
+    font-family:var(--font-mono); font-size:13px; font-weight:700; width:22px; height:22px;
+    display:grid; place-items:center; border-radius:50%; flex:none;
+  }
+  .dec.d0 { background:var(--vermilion); color:#fff; }
+  .dec.d1 { background:var(--celadon); color:#fff; }
+  .dec.d2 { background:var(--celadon-bg); color:var(--celadon); }
+  .dec.d3 { background:var(--gamboge-bg); color:var(--gamboge); }
+  .area {
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; color:var(--ink-faint);
+    flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .star {
+    flex:none; background:transparent; border:0; cursor:pointer; font-size:17px; line-height:1;
+    color:var(--ink-faint); padding:2px 0 2px 4px;
+  }
+  .star:hover { color:var(--vermilion); }
+  .star[aria-pressed="true"] { color:var(--vermilion); }
+  .card h3 {
+    font-family:var(--font-display); font-size:19px; font-weight:600; line-height:1.4;
+    margin:0; text-wrap:balance;
+  }
+  .copy { color:var(--vermilion); font-size:13px; margin:0; line-height:1.55; }
+  .body { color:var(--ink-soft); font-size:13.5px; margin:0; line-height:1.72; flex:1; }
+  .tagrow { display:flex; flex-wrap:wrap; gap:5px; }
+  .tag { font-size:11px; padding:2px 8px; border-radius:20px; font-family:var(--font-body); }
+  .tag.k { background:var(--indigo-bg); color:var(--indigo); }
+  .tag.m { background:var(--gamboge-bg); color:var(--gamboge); }
+  .meta {
+    font-family:var(--font-mono); font-size:11.5px; color:var(--ink-faint);
+    display:flex; flex-wrap:wrap; gap:4px 10px; padding-top:9px; border-top:1px solid var(--line-soft);
+    font-variant-numeric:tabular-nums;
+  }
+  .meta span b { color:var(--ink-soft); font-weight:400; }
+  .links { display:flex; gap:12px; }
+  .links a {
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.04em;
+    color:var(--indigo); text-decoration:none; border-bottom:1px solid transparent;
+  }
+  .links a:hover { border-bottom-color:var(--indigo); }
+  .note { font-size:11.5px; color:var(--ink-faint); font-style:normal; margin:0; line-height:1.55; }
+
+  /* ---------- table ---------- */
+  .tablewrap { overflow-x:auto; padding-top:22px; }
+  table { border-collapse:collapse; width:100%; min-width:820px; background:var(--card); font-size:13px; }
+  th, td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line-soft); vertical-align:top; }
+  th {
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; color:var(--ink-faint);
+    cursor:pointer; user-select:none; white-space:nowrap; position:sticky; top:0; background:var(--card-2);
+    border-bottom:1px solid var(--line);
+  }
+  th:hover { color:var(--vermilion); }
+  th[aria-sort]::after { content:" ↕"; opacity:.4; }
+  th[aria-sort="ascending"]::after { content:" ↑"; opacity:1; color:var(--vermilion); }
+  th[aria-sort="descending"]::after { content:" ↓"; opacity:1; color:var(--vermilion); }
+  td.num { font-family:var(--font-mono); font-variant-numeric:tabular-nums; color:var(--ink-soft); white-space:nowrap; }
+  td.nm { font-family:var(--font-display); font-size:14.5px; }
+  tr:hover td { background:var(--card-2); }
+
+  /* ---------- map ---------- */
+  .mapsec { padding-top:26px; }
+  .mapbox {
+    position:relative; background:var(--card); border:1px solid var(--line-soft);
+    border-radius:3px; aspect-ratio:16/10; min-height:320px; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .mapbox svg { position:absolute; inset:0; width:100%; height:100%; }
+  .landmass {
+    fill:var(--indigo-bg); stroke:var(--indigo); stroke-width:1.25px;
+    stroke-linejoin:round; vector-effect:non-scaling-stroke; opacity:.9;
+  }
+  .node { position:absolute; width:8px; height:8px; transform:translate(-50%,-50%); pointer-events:none; }
+  .dot {
+    display:block; width:8px; height:8px; border-radius:50%;
+    background:var(--vermilion); box-shadow:0 0 0 2.5px var(--card);
+  }
+  .node span {
+    position:absolute; white-space:nowrap; font-size:11.5px; line-height:1.4; color:var(--ink);
+    background:var(--card); padding:1px 4px; border-radius:2px;
+  }
+  .node.r span { left:12px; top:50%; transform:translateY(-50%); }
+  .node.l span { right:12px; top:50%; transform:translateY(-50%); }
+  .node.t span { bottom:12px; left:50%; transform:translateX(-50%); }
+  .node.b span { top:12px; left:50%; transform:translateX(-50%); }
+  .times { padding-top:20px; display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:2px 24px; }
+  .times div {
+    font-family:var(--font-mono); font-size:12px; color:var(--ink-soft); display:flex;
+    justify-content:space-between; gap:10px; padding:4px 0; border-bottom:1px dotted var(--line);
+    font-variant-numeric:tabular-nums;
+  }
+  .times div b { color:var(--ink); font-weight:400; }
+
+  /* ---------- section headings ---------- */
+  h2 {
+    font-family:var(--font-display); font-size:22px; font-weight:600; margin:0 0 6px;
+  }
+  .sublede { color:var(--ink-soft); font-size:13.5px; margin:0 0 4px; max-width:62ch; }
+
+  .empty { padding:60px 20px; text-align:center; color:var(--ink-faint); }
+  .empty p { font-family:var(--font-display); font-size:18px; margin:0 0 6px; color:var(--ink-soft); }
+
+  /* ---------- テーマ切替 ---------- */
+  header.top { position:relative; }
+  .themebtn {
+    position:absolute; right:0; top:44px;
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em; line-height:1;
+    padding:7px 10px; border:1px solid var(--line); border-radius:2px;
+    background:var(--card); color:var(--ink-soft); cursor:pointer;
+  }
+  .themebtn:hover { border-color:var(--ink-faint); color:var(--ink); }
+
+  /* ---------- 共有リンクの通知 ---------- */
+  .banner {
+    margin-top:16px; padding:10px 12px; border-radius:2px;
+    font-size:13px; line-height:1.65;
+    background:var(--celadon-bg); color:var(--celadon);
+  }
+  .banner.warn { background:var(--verm-bg); color:var(--vermilion); }
+
+  /* ---------- ☆の持ち出し ---------- */
+  .carry { padding:14px 0 0; display:flex; flex-direction:column; gap:8px; }
+  .carrynote { margin:0; font-size:12.5px; color:var(--ink-soft); line-height:1.65; max-width:70ch; }
+  .carrynote.warn { color:var(--vermilion); }
+  #carryText {
+    width:100%; min-height:110px; resize:vertical; box-sizing:border-box;
+    font-family:var(--font-mono); font-size:12px; line-height:1.7; padding:10px;
+    border:1px solid var(--line); border-radius:2px; background:var(--card); color:var(--ink);
+  }
+  .carrybtns { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .carrybtns button {
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em; padding:8px 12px;
+    cursor:pointer; border:1px solid var(--line); border-radius:2px;
+    background:var(--card); color:var(--ink-soft);
+  }
+  .carrybtns button:hover { border-color:var(--ink-faint); color:var(--ink); }
+  #carryMsg { font-family:var(--font-mono); font-size:11.5px; color:var(--celadon); }
+  .favbtn.warn { border-color:var(--vermilion); color:var(--vermilion); }
+
+  .hidden { display:none !important; }
+  :focus-visible { outline:2px solid var(--vermilion); outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } }
+
+  /* ---------- スマートフォン ---------- */
+  @media (max-width:640px) {
+    body { text-size-adjust:100%; -webkit-text-size-adjust:100%; }
+    .themebtn { top:30px; }
+    .wrap { padding:0 14px 60px; }
+    header.top { padding:30px 0 20px; }
+    /* 操作バーを2段に収める：1段目に検索、2段目に切替とカウント */
+    .controls { padding:10px 0 9px; gap:8px; }
+    .search { flex:1 1 100%; }
+    .search input { padding:10px 0; font-size:16px; } /* iOSの自動ズーム防止に16px */
+    .seg button { padding:9px 10px; }
+    .favbtn { padding:9px 10px; }
+    .count { font-size:11px; margin-left:auto; }
+    .reset { padding:9px 4px; }
+    /* 指で押せる大きさを確保 */
+    .chip { padding:7px 13px; font-size:13px; }
+    .star { font-size:20px; padding:6px 2px 6px 8px; }
+    /* 概略図は縦長にして、地名が重ならないようにする */
+    .mapbox { aspect-ratio:auto; height:min(58vh,360px); min-height:0; }
+    .node span { font-size:10px; padding:1px 3px; }
+    .card h3 { font-size:18px; }
+  }
+  @media (max-width:380px) {
+    .node span { font-size:9px; }
+    .chip { padding:6px 11px; font-size:12.5px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <button id="theme" class="themebtn" aria-label="表示テーマを切り替える"></button>
+  <h1>中国旅行の<span class="accent">候補地</span></h1>
+  <p class="lede">
+    12月の中国で「できること」を150件並べました。場所ではなく体験が主役です。
+    タグで絞り、気になったものに☆を付けて、そこから行き先を決めてください。
+  </p>
+  <div class="banner hidden" id="banner"></div>
+</header>
+
+<div class="controls">
+  <label class="search">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+    <input id="q" type="search" placeholder="火鍋、温泉、夜、写真…" aria-label="キーワード検索">
+  </label>
+  <div class="seg" role="group" aria-label="表示切り替え">
+    <button id="vCard" aria-pressed="true">カード</button>
+    <button id="vTable" aria-pressed="false">表</button>
+    <button id="vMap" aria-pressed="false">位置関係</button>
+  </div>
+  <button id="favOnly" class="favbtn" aria-pressed="false">☆ のみ</button>
+  <button id="carryBtn" class="favbtn" aria-pressed="false">☆ の控え</button>
+  <span class="count"><b id="shown">150</b> / 150 件</span>
+  <button id="reset" class="reset">リセット</button>
+</div>
+
+<div class="carry hidden" id="carry">
+  <p class="carrynote" id="carryNote"></p>
+  <textarea id="carryText" spellcheck="false" aria-label="☆を付けた体験の一覧"></textarea>
+  <div class="carrybtns">
+    <button id="carryUrl">選択をURLにする</button>
+    <button id="carrySave">ファイルに保存</button>
+    <button id="carryLoad">ファイルから復元</button>
+    <button id="carryCopy">コピー</button>
+    <button id="carryApply">この内容で☆を置き換える</button>
+    <input type="file" id="carryFile" accept=".txt,text/plain" hidden>
+    <span id="carryMsg"></span>
+  </div>
+</div>
+
+<div class="filters" id="filters">
+  <div class="fgroup"><div class="flabel">性質</div><div class="chips" data-axis="kind"></div></div>
+  <div class="fgroup"><div class="flabel">地域</div><div class="chips" data-axis="area"></div></div>
+  <div class="fgroup"><div class="flabel">気分</div><div class="chips" data-axis="mood"></div></div>
+  <details class="more">
+    <summary>実務条件でさらに絞る（12月適性・所要時間・予算・観光地度・屋内外）</summary>
+    <div class="more-body">
+      <div class="fgroup"><div class="flabel">12月</div><div class="chips" data-axis="dec"></div></div>
+      <div class="fgroup"><div class="flabel">所要</div><div class="chips" data-axis="time"></div></div>
+      <div class="fgroup"><div class="flabel">予算</div><div class="chips" data-axis="band"></div></div>
+      <div class="fgroup"><div class="flabel">観光地度</div><div class="chips" data-axis="tourist"></div></div>
+      <div class="fgroup"><div class="flabel">屋内外</div><div class="chips" data-axis="io"></div></div>
+    </div>
+  </details>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="tablewrap hidden" id="tableView">
+  <table>
+    <thead><tr>
+      <th data-k="fav" style="width:34px">☆</th>
+      <th data-k="n">体験</th>
+      <th data-k="area">地域</th>
+      <th data-k="kind">性質</th>
+      <th data-k="decRank">12月</th>
+      <th data-k="timeRank">所要</th>
+      <th data-k="bandRank">予算</th>
+      <th data-k="tourist">観光地度</th>
+      <th data-k="io">屋内外</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<section class="mapsec hidden" id="mapView">
+  <h2>候補地の位置関係</h2>
+  <p class="sublede">輪郭は簡略化した概略図です。掲載している地域だけを載せています。</p>
+  <div class="mapbox" id="mapbox">
+    <svg id="mapsvg" preserveAspectRatio="none" aria-hidden="true">
+      <path id="mainland" class="landmass"></path>
+      <path id="hainanIsle" class="landmass"></path>
+    </svg>
+  </div>
+  <div class="times" id="times"></div>
+</section>
+
+<div class="empty hidden" id="empty">
+  <p>条件に合う体験がありません</p>
+  <span>タグを減らすか、リセットしてください。</span>
+</div>
+
+</div>
+
+<script>
+const DATA = [
+/* ===== 桂林・陽朔 ===== */
+{n:"漓江を竹筏で下る",area:"桂林・陽朔",loc:"楊堤〜興坪",kind:["景色","乗り物"],mood:["言葉を失う"],dec:"★",decNote:"12月は年間で最も雨が少なく、朝霧が出やすい",time:"半日",cost:"120〜200元",band:"中",tourist:"観光地",io:"屋外",
+copy:"20元紙幣の風景の、その中を通る",
+body:"4人乗りの電動竹筏で川面すれすれを進む。朝の漓江は霧で岩山が輪郭だけになり、遠くの峰から順に消えていく。楊堤〜九馬画山が120元、興坪〜九馬画山が200元。ミニプログラム「桂林漓江商城」で事前予約が要る。",
+q:"漓江 竹筏 兴坪"},
+
+{n:"遇龍河の朝の筏",area:"桂林・陽朔",loc:"陽朔",kind:["景色","乗り物","だらだら"],mood:["何もしない"],dec:"◎",decNote:"乾季で水が澄む。人が少ない",time:"半日",cost:"100〜200元",band:"中",tourist:"中間",io:"屋外",
+copy:"漓江の観光船を避けた、静かな方の川",
+body:"漓江本流ではなく、陽朔の田園を縫う支流。竹筏が小さな堰を越えるたびに前がわずかに落ちる。両岸は畑と水牛で、観光地というより誰かの生活道路を借りている感じがある。",
+q:"遇龙河 竹筏 阳朔"},
+
+{n:"十里画廊を電動バイクで流す",area:"桂林・陽朔",loc:"陽朔",kind:["乗り物","景色"],mood:["何もしない"],dec:"◎",decNote:"雨が少なく走りやすい。ただし朝晩は指先が冷える",time:"半日",cost:"50〜100元／日",band:"低",tourist:"中間",io:"屋外",
+copy:"目的地を決めずに、岩山の間を走る",
+body:"陽朔の街で電動バイクを借り、月亮山方面へ道なりに。停まりたいところで停まって、また走る。冬は日中15℃前後で、風を切ると寒いのでウインドブレーカーが要る。",
+q:"阳朔 十里画廊 电动车"},
+
+{n:"相公山から漓江を見下ろす",area:"桂林・陽朔",loc:"陽朔・興坪の対岸",kind:["景色"],mood:["言葉を失う"],dec:"★",decNote:"冬の朝は雲海と霧の発生率が高い。ただし早起き必須",time:"半日",cost:"60〜120元",band:"低",tourist:"中間",io:"屋外",
+copy:"写真家が朝4時に登る、漓江の俯瞰点",
+body:"夜明け前に登り、川が蛇行しながら岩山の間を抜けていくのを上から見る。日が差した瞬間に霧が動く。三脚を立てた写真家が無言で並んでいて、日の出まで誰も喋らない。",
+q:"相公山 日出 漓江"},
+
+{n:"興坪古鎮と20元紙幣の岩",area:"桂林・陽朔",loc:"興坪",kind:["街歩き","景色"],mood:["じっくり見る"],dec:"◎",decNote:"閑散期で人が少なく、古鎮が本来の静けさに戻る",time:"1-2h",cost:"無料",band:"低",tourist:"観光地",io:"屋外",
+copy:"紙幣を掲げて撮る、あの定番を二人でやる",
+body:"20元札の裏の風景がそのままある川辺。定番すぎる場所だが、閑散期は撮影待ちの列がない。石畳の古鎮は10分で歩き切れる規模で、川沿いの茶屋で座っているのが正解。",
+q:"兴坪古镇 20元 人民币 背景"},
+
+{n:"陽朔西街の夜と啤酒魚",area:"桂林・陽朔",loc:"陽朔",kind:["食","夜遊び"],mood:["食べ倒す"],dec:"○",decNote:"閑散期は店の数と賑わいが落ちる",time:"1-2h",cost:"80〜150元／2人",band:"低",tourist:"観光地",io:"半々",
+copy:"漓江の魚を、ビールで煮る",
+body:"鱗を落とさず皮ごと焼いてからビールとトマトで煮込む陽朔の名物。西街は完全な観光ストリートだが、夜に岩山のシルエットが黒く抜けて見えるのは悪くない。",
+q:"阳朔 啤酒鱼 西街"},
+
+{n:"龍脊棚田の冬",area:"桂林・陽朔",loc:"龍勝（桂林から2h）",kind:["景色","暮らし"],mood:["言葉を失う"],dec:"△",decNote:"稲はなく水も張っていない。ただし霜や雪が乗ると別物になる",time:"1日",cost:"80元＋宿",band:"中",tourist:"観光地",io:"屋外",
+copy:"稲のない棚田を、あえて冬に見る",
+body:"緑の季節の写真で有名な場所を、あえて何もない時期に見る。等高線だけが残った斜面に霜が降りると、線が白く浮き上がる。ヤオ族・チワン族の村に泊まれる。",
+q:"龙脊梯田 冬季 雪"},
+
+/* ===== 貴州 ===== */
+{n:"荔波・小七孔",area:"貴州",loc:"黔南（貴陽から3h）",kind:["景色"],mood:["言葉を失う"],dec:"○",decNote:"水量は落ちるが、水色は冬のほうが澄む。凍結注意",time:"1日",cost:"55元＋観光車40元",band:"低",tourist:"観光地",io:"屋外",
+copy:"信じられない色の水が、石橋の下を流れる",
+body:"翡翠を溶かしたような水が段々に流れ落ちる。冬は水量が減って滝は穏やかになるが、そのぶん水の色が濁らない。古橋は「忠貞の橋」と呼ばれ、恋人が渡ると添い遂げるという言い伝えがある。",
+q:"荔波 小七孔 冬季"},
+
+{n:"西江千戸苗寨に泊まる",area:"貴州",loc:"黔東南",kind:["暮らし","景色","食"],mood:["中国を知る","言葉を失う"],dec:"◎",decNote:"閑散期で宿が取りやすく、村が観光地から生活の場に戻る",time:"泊まり",cost:"門票100元前後＋宿",band:"中",tourist:"観光地",io:"半々",
+copy:"斜面いっぱいの木造家屋に、一斉に灯がつく",
+body:"千戸を超える苗族の家が山の斜面に貼りついている。日没後に灯りが入る瞬間が本番で、対岸の展望台から見る。村内に泊まると、観光客が帰ったあとの本来の静けさに立ち会える。長卓宴（長テーブルの宴席）と米酒。",
+q:"西江千户苗寨 夜景"},
+
+{n:"肇興侗寨と侗族大歌",area:"貴州",loc:"黔東南",kind:["暮らし"],mood:["中国を知る","じっくり見る"],dec:"◎",decNote:"冬は囲炉裏を囲む季節。観光客が激減して村が静か",time:"泊まり",cost:"門票80元前後＋宿",band:"中",tourist:"中間",io:"半々",
+copy:"指揮者も伴奏もない多声合唱を、生で聴く",
+body:"5つの鼓楼を持つ侗族の村。侗族大歌は楽譜も指揮もなしに複数の声部が重なるユネスコ無形文化遺産で、観光ショーではなく村の広場で歌われる場に当たることがある。西江より観光地化が浅い。",
+q:"肇兴侗寨 侗族大歌"},
+
+{n:"黄果樹瀑布",area:"貴州",loc:"安順（貴陽から1.5h）",kind:["景色"],mood:["言葉を失う"],dec:"○",decNote:"水量は夏に劣るが、飛沫が凍りついた景色になる年がある",time:"1日",cost:"180元前後",band:"中",tourist:"観光地",io:"屋外",
+copy:"滝の裏側を、水のカーテン越しに歩く",
+body:"アジア最大級の滝。裏側に「水簾洞」という通路があり、落ちてくる水を内側から見られる。冬は水量が減るぶん轟音も落ち着き、周囲の岩に氷柱が下がる。",
+q:"黄果树瀑布 冬季"},
+
+{n:"梵浄山の金頂",area:"貴州",loc:"銅仁（貴陽から3.5h）",kind:["景色"],mood:["言葉を失う"],dec:"△",decNote:"積雪・凍雨でロープウェイが止まる日がある。行程を固定しない前提で",time:"1日",cost:"門票110元＋索道160元前後",band:"中",tourist:"観光地",io:"屋外",
+copy:"雲海から突き出た岩の上に、寺が二つ載っている",
+body:"垂直に切り立った岩峰の頂上が裂けていて、その両側に小さな寺が建つ。冬は雪をかぶり、朝は雲海が出る。ただし天候リスクが最も高い候補で、閉鎖の可能性を織り込む必要がある。",
+q:"梵净山 雪 金顶"},
+
+{n:"鎮遠古鎮",area:"貴州",loc:"黔東南",kind:["街歩き"],mood:["じっくり見る","何もしない"],dec:"★",decNote:"冬の川霧が古鎮を覆う。閑散期で宿代が下がる",time:"泊まり",cost:"無料＋宿",band:"低",tourist:"中間",io:"屋外",
+copy:"S字に蛇行する川の、両岸に街が折り重なる",
+body:"舞陽河がS字に街を貫き、夜になると両岸の建物が水面に映る。麗江ほど観光地化されておらず、生活の音が残っている。朝は川霧が立って対岸が消える。",
+q:"镇远古镇 夜景"},
+
+{n:"貴陽の酸湯魚",area:"貴州",loc:"貴陽",kind:["食"],mood:["食べ倒す","中国を知る"],dec:"★",decNote:"寒い日に最も効く。貴州の冬は湿冷で、酸味と辣が体を戻す",time:"1-2h",cost:"100〜180元／2人",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"発酵させた米のとぎ汁とトマトで、魚を煮る",
+body:"苗族の酸湯は唐辛子の辣ではなく、発酵由来の酸っぱさが軸。赤酸湯（トマト）と白酸湯（米のとぎ汁）があり、魚を入れて煮る。四川の麻辣とは全く別の系統で、日本人にはこちらのほうが刺さることが多い。",
+q:"贵阳 酸汤鱼"},
+
+{n:"苗族の銀細工を打つ",area:"貴州",loc:"黔東南・雷山／台江",kind:["体験","暮らし"],mood:["中国を知る","じっくり見る"],dec:"◎",decNote:"完全屋内。天候に左右されない",time:"半日",cost:"150〜400元",band:"中",tourist:"中間",io:"屋内",
+copy:"銀を叩いて、二人ぶんの何かを作って帰る",
+body:"苗族の女性が身につける銀飾りの工房で、指輪やペンダントを自分で打たせてもらえる体験がある。買うのではなく自分で打つので、完成までに数時間かかる。",
+q:"苗族 银饰 手工体验"},
+
+/* ===== 雲南 ===== */
+{n:"洱海を一周する",area:"雲南",loc:"大理",kind:["乗り物","景色","だらだら"],mood:["何もしない","言葉を失う"],dec:"◎",decNote:"雲南の冬は乾季で晴天率が高い。日中16℃前後で自転車日和",time:"1日",cost:"電動車150〜250元／日",band:"中",tourist:"観光地",io:"屋外",
+copy:"湖の色が、時間で青から銀に変わっていく",
+body:"周囲128kmの湖を電動車か自転車で回る。冬は空気が乾いて透明度が上がり、対岸の蒼山の稜線まで見える。海舌公園や喜洲あたりで止まって、湖に足を向けて座っているだけの時間が本体。",
+q:"洱海 环海 骑行"},
+
+{n:"喜洲の白族の集落",area:"雲南",loc:"大理・喜洲",kind:["街歩き","暮らし"],mood:["じっくり見る"],dec:"◎",decNote:"乾季で麦畑が青い。晴天率が高い",time:"半日",cost:"無料〜80元",band:"低",tourist:"中間",io:"半々",
+copy:"白壁に水墨画が描かれた家が、畑の中に建っている",
+body:"白族の伝統家屋は白壁に山水画と漢詩が直接描かれている。集落の外に麦畑が広がり、その中に一本道がある。喜洲粑粑（層になった焼き餅）を買って歩く。",
+q:"喜洲古镇 白族 民居"},
+
+{n:"麗江古城の夜明け",area:"雲南",loc:"麗江",kind:["街歩き"],mood:["じっくり見る","何もしない"],dec:"★",decNote:"冬は日中12〜15℃、朝晩は氷点下近い。人が最も少ない季節",time:"1-2h",cost:"無料",band:"低",tourist:"観光地",io:"屋外",
+copy:"観光客に占領される前の2時間だけ、別の街になる",
+body:"日中の麗江古城は完全な観光地だが、朝7時前は水路の音と石畳を掃く音しかしない。ナシ族の老人が広場で踊り始める。同じ場所とは思えないほど印象が違う。",
+q:"丽江古城 清晨"},
+
+{n:"玉龍雪山",area:"雲南",loc:"麗江",kind:["景色"],mood:["言葉を失う"],dec:"○",decNote:"標高4500m超まで上がる。冬は最も雪が美しいが高山反応に注意",time:"1日",cost:"門票＋索道で500元前後",band:"高",tourist:"観光地",io:"屋外",
+copy:"標高4506mの木道を、酸素缶を持って歩く",
+body:"ロープウェイで一気に4506mまで上がり、氷河公園の木道を歩く。冬は雪と氷に覆われる。高山反応は本物なので、酸素缶を買い、ゆっくり歩くこと。木道は往復で1時間ほど。",
+q:"玉龙雪山 冰川公园"},
+
+{n:"シャングリラ・松賛林寺",area:"雲南",loc:"迪慶（麗江から3h）",kind:["景色"],mood:["言葉を失う","じっくり見る"],dec:"△",decNote:"標高3300m、冬は氷点下。道路凍結の可能性",time:"1日",cost:"90元前後",band:"中",tourist:"中間",io:"半々",
+copy:"「小ポタラ宮」と呼ばれるチベット仏教寺院",
+body:"雲南のチベット文化圏。白と朱と金の伽藍が丘の斜面に積み上がる。冬は空が異様に濃い青になり、経幡がひたすら鳴っている。中国の中の、明確に別の文化圏に入る体験。",
+q:"松赞林寺 香格里拉"},
+
+{n:"告荘西双景の星光夜市",area:"雲南",loc:"西双版納",kind:["夜遊び","食"],mood:["食べ倒す","はしゃぐ"],dec:"◎",decNote:"12月でも夜20℃前後。中国で最も冬を回避できる夜市",time:"1-2h",cost:"100〜200元／2人",band:"低",tourist:"観光地",io:"屋外",
+copy:"12月に、半袖で夜市を歩ける場所",
+body:"タイ族文化圏の街に建てられた大規模な夜市。金色の仏塔がライトアップされ、東南アジアそのものの空気になる。焼き物、生の熱帯果実、ハーブの効いたサラダ。中国であることを忘れる時間がある。",
+q:"告庄西双景 星光夜市"},
+
+{n:"西双版納の熱帯植物園",area:"雲南",loc:"勐臘・勐侖",kind:["街歩き"],mood:["じっくり見る","何もしない"],dec:"◎",decNote:"12月は乾季で歩きやすく、気温24℃前後",time:"1日",cost:"80元前後",band:"低",tourist:"観光地",io:"屋外",
+copy:"12月の中国で、熱帯雨林に入る",
+body:"中国科学院が運営する1100haの植物園。板根、絞め殺しの木、夜に咲く花。名古屋を出た数時間後に熱帯雨林の中にいるという落差がある。",
+q:"西双版纳 热带植物园"},
+
+{n:"騰衝・熱海の温泉",area:"雲南",loc:"保山・騰衝",kind:["だらだら"],mood:["何もしない"],dec:"★",decNote:"寒い季節が本番。火山性温泉で日本人の温泉感覚に最も近い",time:"1日",cost:"200〜400元",band:"中",tourist:"中間",io:"半々",
+copy:"中国で、日本人が納得できる温泉に入る",
+body:"火山地帯の騰衝は中国屈指の温泉地。熱海景区の浴谷は斜面に沿って露天が点在し、石畳の小道で仕切られている。近くの和順古鎮は僑郷（華僑の故郷）の落ち着いた町並みで、温泉とセットで2泊が効く。",
+q:"腾冲 热海 温泉 浴谷"},
+
+/* ===== 福建・潮汕 ===== */
+{n:"蟳埔村の簪花",area:"福建・潮汕",loc:"泉州",kind:["体験"],mood:["はしゃぐ","中国を知る"],dec:"◎",decNote:"屋外撮影だが泉州の12月は15℃前後で問題ない",time:"半日",cost:"体験50〜150元／撮影込み200〜500元",band:"中",tourist:"観光地",io:"半々",
+copy:"頭を花で一周させて、漁村を歩く",
+body:"漁村の女性が受け継いできた「簪花囲」。地元の女性が髪を結い、生花を輪にして頭に挿してくれる。今の中国で最も流行している体験の一つで、二人ぶん着けて海辺で撮る。牡蠣殻を積み上げた壁の家が並ぶ。",
+q:"蟳埔村 簪花"},
+
+{n:"泉州・開元寺と西街",area:"福建・潮汕",loc:"泉州",kind:["街歩き"],mood:["じっくり見る"],dec:"◎",decNote:"冬でも15℃前後で歩きやすい",time:"半日",cost:"無料〜50元",band:"低",tourist:"中間",io:"半々",
+copy:"世界遺産の街が、まだ生活の街のままでいる",
+body:"かつて世界最大級の貿易港だった泉州には、仏教・イスラム・マニ教・道教の遺構が同じ街に混ざっている。開元寺の双塔の下で老人が茶を飲み、西街では線香と食べ物の匂いが一緒に漂う。観光地化が浅い世界遺産。",
+q:"泉州 开元寺 西街"},
+
+{n:"鼓浪嶼",area:"福建・潮汕",loc:"厦門",kind:["街歩き"],mood:["何もしない"],dec:"○",decNote:"冬でも温暖。ただし海風で体感は下がる",time:"1日",cost:"船＋門票で100元前後",band:"低",tourist:"観光地",io:"屋外",
+copy:"車が一台もない島を、坂道づたいに歩く",
+body:"かつての共同租界で、洋館とピアノの島と呼ばれる。自動車が存在しないので、坂と階段だけで構成された路地を歩くことになる。どこかの家からピアノの音が漏れてくる。",
+q:"鼓浪屿 老别墅"},
+
+{n:"福建土楼に泊まる",area:"福建・潮汕",loc:"永定・南靖",kind:["暮らし"],mood:["じっくり見る","中国を知る"],dec:"○",decNote:"土楼の内部は暖房がなく冷える。厚着必須",time:"泊まり",cost:"門票90元前後＋宿",band:"中",tourist:"観光地",io:"半々",
+copy:"円形の集合住宅の中で、一晩を過ごす",
+body:"客家の人々が数百年前から住む円形の要塞住宅。中庭を囲んで4層の木造回廊が円を描く。日帰りで見るのと、中に泊まって朝の中庭を見るのとでは全く違う体験になる。",
+q:"福建土楼 客家 民宿"},
+
+{n:"潮汕の牛肉火鍋",area:"福建・潮汕",loc:"汕頭・潮州",kind:["食"],mood:["食べ倒す"],dec:"★",decNote:"寒い季節に最も合う。屋内",time:"1-2h",cost:"200〜350元／2人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"部位ごとに、秒単位で茹で時間が違う",
+body:"その日に潰した牛を部位ごとに切り分け、澄んだ牛骨スープに8秒、10秒、15秒と決められた時間だけ通す。脂の入り方で名前が付いた部位が10種類以上ある。中国の火鍋の中で最も繊細な系統。",
+q:"潮汕 牛肉火锅"},
+
+{n:"潮州古城と工夫茶",area:"福建・潮汕",loc:"潮州",kind:["街歩き","食","だらだら"],mood:["じっくり見る","何もしない"],dec:"◎",decNote:"温暖。茶は寒い日に効く",time:"半日",cost:"50〜150元",band:"低",tourist:"中間",io:"半々",
+copy:"三つの小さな杯を、必ず三人で回す",
+body:"潮汕の工夫茶は極小の急須と三つの杯で、濃く淹れて何度も回す。街のあらゆる店先でやっている。牌坊街の下を歩き、腸粉や魚のすり身の店をつまみながら、どこかの店主に茶に呼ばれるのが正しい過ごし方。",
+q:"潮州古城 工夫茶 牌坊街"},
+
+/* ===== 四川・重慶 ===== */
+{n:"成都・パンダ基地の早朝",area:"四川・重慶",loc:"成都",kind:["街歩き"],mood:["じっくり見る"],dec:"★",decNote:"パンダは寒いほど活発。冬は最も動く季節",time:"半日",cost:"55元",band:"低",tourist:"観光地",io:"屋外",
+copy:"寒い日ほど、パンダはよく動く",
+body:"夏は寝てばかりのパンダが、冬は明らかに活動的になる。開園直後の朝食の時間に入るのが鉄則で、9時を過ぎると寝始める。ベタな場所だが、冬に行く合理的な理由がある数少ない観光地。",
+q:"成都 大熊猫基地 冬天"},
+
+{n:"鶴鳴茶社で耳かき",area:"四川・重慶",loc:"成都・人民公園",kind:["だらだら","暮らし"],mood:["何もしない","中国を知る"],dec:"◎",decNote:"冬は日差しのある日を選ぶ。屋外の竹椅子",time:"1-2h",cost:"茶20〜40元／耳かき50〜100元",band:"低",tourist:"中間",io:"屋外",
+copy:"竹の椅子に沈んで、耳を掻いてもらう",
+body:"成都の公園の中の茶館。竹椅子に座って蓋碗茶を頼むと、音叉を鳴らしながら「采耳」の職人が回ってくる。頭の中で金属音が響く。周りでは麻雀とトランプと昼寝。成都の時間の流れ方が体でわかる。",
+q:"鹤鸣茶社 人民公园 采耳"},
+
+{n:"成都の火鍋",area:"四川・重慶",loc:"成都",kind:["食"],mood:["食べ倒す"],dec:"★",decNote:"寒い時期が本番。屋内",time:"1-2h",cost:"200〜300元／2人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"痺れと辛さは、別の感覚だと知る",
+body:"花椒の「麻」と唐辛子の「辣」が別物だと体で理解する場所。鴨血、毛肚、脳花。二人なら鴛鴦鍋にせず、いきなり全紅にするかどうかが最初の分岐になる。",
+q:"成都 火锅"},
+
+{n:"重慶・洪崖洞と長江索道",area:"四川・重慶",loc:"重慶",kind:["夜遊び","乗り物","景色"],mood:["言葉を失う","はしゃぐ"],dec:"◎",decNote:"冬は霧が出やすく、夜景がさらに幻想的になる",time:"1-2h",cost:"索道30元",band:"低",tourist:"観光地",io:"半々",
+copy:"11階建ての建物の、1階と11階が両方地上に面する",
+body:"崖にへばりつく吊脚楼が夜に黄金色に光る。街全体が立体で、地図が意味をなさない。長江索道でロープウェイに乗り、川の上から高層ビル群を見る。冬の霧が出るとSF映画になる。",
+q:"重庆 洪崖洞 长江索道 夜景"},
+
+{n:"重慶の老火鍋",area:"四川・重慶",loc:"重慶",kind:["食"],mood:["食べ倒す"],dec:"★",decNote:"屋内。重慶の冬は湿度が高く底冷えするので火鍋が効く",time:"1-2h",cost:"180〜280元／2人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"牛脂が固まって白い塊になっている鍋",
+body:"成都より粗く、油が重い。九宮格という格子で仕切られた鍋の、格ごとに火力が違う。地元の人は油碟（ごま油とニンニク）で温度を下げて食べる。汗をかくことが目的の食事。",
+q:"重庆 老火锅 九宫格"},
+
+{n:"楽山大仏",area:"四川・重慶",loc:"楽山（成都から1h）",kind:["観る"],mood:["言葉を失う"],dec:"○",decNote:"冬は霧の日があるが、階段の行列が短い",time:"1日",cost:"80元前後",band:"低",tourist:"観光地",io:"屋外",
+copy:"高さ71m。足の指の上に人が立てる",
+body:"川の合流点の崖を丸ごと彫った座像。上から降りる桟道は狭く、混雑期は2時間待ちになるが、冬は空いている。船から正面を見る方法もあり、そちらのほうが全体像がわかる。",
+q:"乐山大佛"},
+
+/* ===== 江南 ===== */
+{n:"上海・武康路のcitywalk",area:"江南",loc:"上海",kind:["街歩き"],mood:["じっくり見る","何もしない"],dec:"◎",decNote:"冬でも歩ける。プラタナスが落葉して建物がよく見える",time:"半日",cost:"無料",band:"低",tourist:"中間",io:"屋外",
+copy:"目的地を決めずに、旧租界を歩き続ける",
+body:"中国で完全に定着した「citywalk」の発祥地の一つ。武康大楼から安福路、五原路へ、洋館とカフェと古着屋が混ざる路地を抜けていく。冬は落葉して建物のファサードが露出する。セントレアから直行便で行ける唯一の大都市。",
+q:"上海 武康路 citywalk"},
+
+{n:"蘇州・平江路と園林",area:"江南",loc:"蘇州",kind:["街歩き"],mood:["じっくり見る"],dec:"○",decNote:"園林は冬が本来の姿。ただし江南の冬は湿って冷たい",time:"1日",cost:"門票30〜80元",band:"低",tourist:"観光地",io:"屋外",
+copy:"庭は、葉が落ちてからが本番だと言われる",
+body:"拙政園や網師園は、緑が減った冬にこそ石と水と窓の構図が見える設計になっている。平江路の水路沿いは上海から高鉄25分。冬の江南は気温以上に湿気で冷えるので、厚手のコートが要る。",
+q:"苏州 拙政园 冬季"},
+
+{n:"杭州・西湖の冬",area:"江南",loc:"杭州",kind:["景色","街歩き"],mood:["じっくり見る","何もしない"],dec:"○",decNote:"雪が降れば「断橋残雪」になるが、確率は低い",time:"1日",cost:"無料",band:"低",tourist:"観光地",io:"屋外",
+copy:"雪が降ったときだけ完成する、名前のついた景色",
+body:"西湖十景の一つ「断橋残雪」は、橋の上の雪が部分的に溶けて途切れて見える現象を指す。狙って見られるものではないが、冬の西湖は霧が湖面に乗って、それだけで水墨画になる。",
+q:"西湖 断桥残雪 冬"},
+
+{n:"上海ディズニー",area:"江南",loc:"上海",kind:["夜遊び","乗り物"],mood:["はしゃぐ"],dec:"○",decNote:"冬は空いていて待ち時間が短い。ただし屋外で終日寒い",time:"1日",cost:"475〜799元／人",band:"高",tourist:"観光地",io:"屋外",
+copy:"世界最大のシンデレラ城と、一番短い列",
+body:"中国の若いカップルの定番。冬の平日は待ち時間が劇的に短く、1日で主要アトラクションが回れる。ここでしか乗れないTRONのライドがある。防寒対策をしないと夜のパレードで凍える。",
+q:"上海迪士尼 冬季"},
+
+{n:"烏鎮の水郷の夜",area:"江南",loc:"桐郷（上海から1.5h）",kind:["街歩き"],mood:["じっくり見る","何もしない"],dec:"○",decNote:"冬は霧が水路に降りる。寒いが人が少ない",time:"泊まり",cost:"門票110〜190元＋宿",band:"中",tourist:"観光地",io:"屋外",
+copy:"完全に整備された水郷を、あえて夜に見る",
+body:"西柵は徹底的に管理・修復された水郷で、生活感はほぼない。ただし夜のライトアップだけは他に代えがきかない。水路に舟を出し、両岸の建物が水面で反転しているのを見る。中に泊まると閉園後の街を独占できる。",
+q:"乌镇 西栅 夜景"},
+
+/* ===== 北京・西安 ===== */
+{n:"雪の故宮を待つ",area:"北京・西安",loc:"北京",kind:["景色"],mood:["言葉を失う","じっくり見る"],dec:"○",decNote:"12月の北京は氷点下だが暖房完備。雪は運次第",time:"1日",cost:"60元",band:"低",tourist:"観光地",io:"屋外",
+copy:"朱の壁に雪が積もる日は、年に数日しかない",
+body:"雪が降ると故宮は当日チケットが即完売するほど中国人が殺到する。赤い壁と黄色い瑠璃瓦に白が乗る。降らなくても冬の故宮は空気が澄んで、屋根の稜線が遠くまで見える。要事前予約。",
+q:"故宫 雪"},
+
+{n:"胡同と什刹海",area:"北京・西安",loc:"北京",kind:["街歩き","暮らし"],mood:["中国を知る","じっくり見る"],dec:"★",decNote:"湖が凍れば天然のスケートリンクになる",time:"半日",cost:"無料",band:"低",tourist:"中間",io:"屋外",
+copy:"凍った湖の上を、氷の椅子で滑る",
+body:"什刹海が全面凍結すると、氷面に椅子型のソリが並ぶ。北京の子供が昔からやっている遊びで、二人で押し合いながら滑る。周りの胡同では白菜が軒先に積まれ、石炭の匂いがする。",
+q:"什刹海 冰场 冬"},
+
+{n:"銅鍋の涮羊肉",area:"北京・西安",loc:"北京",kind:["食"],mood:["食べ倒す"],dec:"★",decNote:"北京の冬の食べ物そのもの。屋内で暖房完備",time:"1-2h",cost:"200〜300元／2人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"湯は白湯。ネギと生姜しか入っていない",
+body:"炭を入れた銅鍋で、味のついていない湯に羊肉を数秒くぐらせ、胡麻ダレで食べる。四川の火鍋と正反対の思想。窓が結露した老舗で、二人で銅鍋を挟むのが北京の冬。",
+q:"涮羊肉 铜锅 北京"},
+
+{n:"西安の城壁を自転車で一周",area:"北京・西安",loc:"西安",kind:["乗り物"],mood:["はしゃぐ"],dec:"○",decNote:"晴れれば爽快。ただし城壁の上は風が強く体感が下がる",time:"半日",cost:"門票54元＋レンタル45元",band:"低",tourist:"観光地",io:"屋外",
+copy:"城壁の上を、13.7km走り切る",
+body:"明代の城壁がまるごと残っていて、その上をタンデム自転車で一周できる。約2時間。壁の内側には旧市街、外側には現代の西安が広がり、境界線の上を走っている感覚になる。",
+q:"西安 城墙 骑行"},
+
+{n:"回民街と大唐不夜城",area:"北京・西安",loc:"西安",kind:["食","夜遊び"],mood:["食べ倒す","はしゃぐ"],dec:"○",decNote:"屋外の食べ歩きなので寒さ対策が要る",time:"1-2h",cost:"100〜200元／2人",band:"低",tourist:"観光地",io:"屋外",
+copy:"羊肉泡饃のパンを、自分の手で千切る",
+body:"回民街ではまず硬いパンを自分で細かく千切り、それを羊のスープで煮てもらう。柿子餅、肉夹馍、biang biang麺。大唐不夜城は夜に唐代の街並みを再現したライトアップで、完全な作り物だが規模で押し切ってくる。",
+q:"西安 回民街 大唐不夜城"},
+
+/* ===== 広東・海南 ===== */
+{n:"三亜の海",area:"海南・北海",loc:"海南島",kind:["だらだら","景色"],mood:["何もしない"],dec:"◎",decNote:"12月で25℃前後。中国人が冬に逃げる定番の場所",time:"泊まり",cost:"宿次第（高騰しやすい）",band:"高",tourist:"観光地",io:"屋外",
+copy:"12月に、海に入れる中国",
+body:"中国の最南端。冬でも泳げる。中国人にとっての「冬のリゾート」がどういうものかを見る意味もある。年末年始は価格が跳ね上がるので、12月中旬までなら現実的。",
+q:"三亚 冬季 海滩"},
+
+{n:"涠洲島",area:"海南・北海",loc:"広西・北海沖",kind:["景色","だらだら"],mood:["何もしない"],dec:"○",decNote:"冬は海が荒れて欠航する日がある",time:"泊まり",cost:"上陸費115元＋宿",band:"中",tourist:"中間",io:"屋外",
+copy:"火山でできた島に、フランス様式の教会が建っている",
+body:"中国最大級の火山島。黒い溶岩の海岸と、清代に建てられたゴシック様式の天主堂が同居している。三亜ほど開発されておらず、原付で一周できる規模。桂林から北海へは高鉄で行ける。",
+q:"涠洲岛 天主教堂"},
+
+{n:"広州の早茶",area:"広東・香港",loc:"広州",kind:["食","暮らし"],mood:["食べ倒す","中国を知る"],dec:"◎",decNote:"温暖で屋内。乗り継ぎ拠点としても機能する",time:"1-2h",cost:"150〜250元／2人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"朝7時の茶楼は、老人と新聞で埋まっている",
+body:"「一盅两件」——茶一杯と点心二品。エビ餃子、焼売、腸粉、鳳爪を頼み、2時間かけて食べる。観光ではなく生活のリズムで、隣のテーブルの老人が新聞を読み終わるまでいる。南方への乗り継ぎ拠点にもなる。",
+q:"广州 早茶 茶楼"},
+
+/* ===== 普通の遊び ===== */
+{n:"洗浴中心で一日過ごす",area:"各地",loc:"東北が本場・全国にある",kind:["だらだら","暮らし"],mood:["何もしない","中国を知る"],dec:"★",decNote:"寒い季節が最盛期。完全屋内で、外の寒さから完全に逃げられる",time:"1日",cost:"入場25〜168元／アカスリ込み149元前後",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"風呂とアカスリと仮眠と食べ放題とKTVが、一つの建物に入っている",
+body:"今の中国で最も勢いのある遊び場。入浴後に浴衣を渡され、館内で仮眠・食事・映画・eスポーツ・剧本杀まで全部できる。24時間営業で、そのまま泊まる人も多い。18〜35歳が客の6割近くを占め、外国人観光客も殺到している。二人で行って別々に入り、館内で合流する。",
+q:"洗浴中心 东北 搓澡"},
+
+{n:"围炉煮茶",area:"各地",loc:"全国",kind:["だらだら","食"],mood:["何もしない"],dec:"★",decNote:"冬限定の遊び。まさに12月のためのもの",time:"1-2h",cost:"60〜150元／人",band:"低",tourist:"現地の日常",io:"半々",
+copy:"炭火を囲んで、餅と芋と栗を網で焼きながら茶を飲む",
+body:"数年前から中国の冬の定番になった過ごし方。小さな炭炉の上に網を置き、餅・さつまいも・栗・みかん・落花生を焼きながら、横で茶を淹れ続ける。焼き上がるまで待つ時間が長いので、席を立つ理由がない。",
+q:"围炉煮茶"},
+
+{n:"KTVの個室に二人で入る",area:"各地",loc:"全国",kind:["夜遊び"],mood:["はしゃぐ"],dec:"◎",decNote:"完全屋内。冬の夜の定番",time:"1-2h",cost:"100〜300元／2人",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"日本のカラオケとは、部屋の作りから違う",
+body:"中国のKTVは部屋が広く、ソファがコの字で、テーブルにフルーツ盛りとナッツが出る。日本語曲も入っている店が多い。ランキング画面にその年の流行歌が並ぶので、選曲画面を眺めるだけでも中国の10年がわかる。昼間の「歓唱」時間帯なら格安。",
+q:"KTV 量贩式 包厢"},
+
+{n:"密室逃脱",area:"各地",loc:"全国",kind:["体験"],mood:["はしゃぐ"],dec:"◎",decNote:"完全屋内。中国語が要るが、読解を中国語話者に任せれば動く役でも成立する",time:"1-2h",cost:"100〜200元／人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"中国の脱出ゲームは、金のかけ方が違う",
+body:"日本の同種の店より予算規模が大きく、機械仕掛けやNPCの俳優が入る本格的なものが多い。中国語が必要だが、二人一組なら読解と物理作業で分担できる。剧本杀（マーダーミステリー）より言語の壁が低い。",
+q:"密室逃脱 沉浸式"},
+
+{n:"桌游吧",area:"各地",loc:"全国",kind:["だらだら"],mood:["はしゃぐ","何もしない"],dec:"◎",decNote:"完全屋内。時間制で長居できる",time:"1-2h",cost:"30〜60元／人・時間",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"ボードゲームカフェで、雨の午後を潰す",
+body:"時間制で飲み放題が付くことが多い。ルール説明が中国語なので、言語に依存しないゲーム（ウノ、ジェンガ、体を使うもの）を選ぶと二人で成立する。天候が崩れた日の避難先として持っておくと強い。",
+q:"桌游吧 桌游店"},
+
+{n:"足浴・按摩",area:"各地",loc:"全国",kind:["だらだら"],mood:["何もしない"],dec:"◎",decNote:"歩き回った夜に効く。屋内",time:"1-2h",cost:"80〜200元／人",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"歩き疲れた夜を、90分で回収する",
+body:"中国の街には足浴の店が無数にある。個室に並んだリクライニングに二人で寝て、薬草湯に足を入れてから足裏、肩、頭までやってもらう。一日歩き回る旅程を組むなら、これを毎晩入れておくと体が持つ。",
+q:"足浴 按摩 采耳"},
+
+{n:"菜市場を歩く",area:"各地",loc:"全国",kind:["暮らし"],mood:["中国を知る","じっくり見る"],dec:"◎",decNote:"朝が本番。半屋内が多く、雨天でも成立する",time:"1-2h",cost:"無料",band:"低",tourist:"現地の日常",io:"半々",
+copy:"その土地で何が食べられているか、一番速くわかる場所",
+body:"観光地を10軒回るより、市場を1軒歩くほうが土地がわかる。見たことのない野菜、地域ごとに違う豆腐、生きたまま並ぶ魚。名前のわからないものばかりで一時間が経つ。貴州の市場と広州の市場は完全に別の国。",
+q:"菜市场 逛"},
+
+{n:"大学の食堂で食べる",area:"各地",loc:"全国",kind:["暮らし","食"],mood:["中国を知る"],dec:"◎",decNote:"屋内。冬休みは1月中旬からなので12月は通常営業",time:"1-2h",cost:"20〜40元／2人",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"一食10元で、中国の20歳が毎日食べているものを食べる",
+body:"大学の食堂は基本的に外部の人間も入れる（要確認）。数十種類の料理が並び、二人で食べても数十元。武漢大、四川大、厦門大など、キャンパス自体が観光地になっている大学もある。",
+q:"大学食堂 高校 饭卡"},
+
+{n:"胖東来・山姆会員店",area:"各地",loc:"許昌・新郷／全国の山姆",kind:["暮らし"],mood:["中国を知る","じっくり見る"],dec:"◎",decNote:"完全屋内。天候に関係なく成立する",time:"半日",cost:"買い物次第",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"スーパーそのものが観光地になっている国",
+body:"河南省の胖東来は、従業員待遇と品質管理で神格化され、全国から人が「見に行く」スーパー。山姆（コストコ系）は中国の中間層の生活が最も可視化される場所。日本のスーパーとの品揃えと価格の違いが、そのまま並んでいる。",
+q:"胖东来 山姆会员店"},
+
+{n:"脱口秀を観る",area:"各地",loc:"上海・北京・成都",kind:["観る","夜遊び"],mood:["中国を知る","はしゃぐ"],dec:"◎",decNote:"屋内。ただし言語の壁が最も高い候補",time:"1-2h",cost:"80〜200元／人",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"何で笑っているのかを、隣で通訳してもらう",
+body:"中国のスタンダップコメディは今、若者文化の中心にある。言葉はほぼ理解できないが、何がタブーで何が笑いになるのかは、客席の反応から見えてくる。開放麦（オープンマイク）なら数十元で入れる。",
+q:"脱口秀 开放麦"},
+
+{n:"livehouseに行く",area:"各地",loc:"上海・北京・成都・武漢",kind:["観る","夜遊び"],mood:["はしゃぐ","中国を知る"],dec:"◎",decNote:"屋内。冬はツアーが多い季節",time:"1-2h",cost:"100〜300元／人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"名前を知らないバンドを、当日券で観る",
+body:"中国のインディーシーンは層が厚い。秀動などのアプリで日程を調べて、名前を知らないバンドをそのまま観に行く。言語がわからなくても音は伝わるし、その街の若者が何に反応するかが見える。",
+q:"livehouse 演出 秀动"},
+
+{n:"情侣写真館",area:"各地",loc:"全国",kind:["体験"],mood:["はしゃぐ"],dec:"◎",decNote:"完全屋内。冬でも問題なし",time:"半日",cost:"300〜1500元／2人",band:"高",tourist:"現地の日常",io:"屋内",
+copy:"中国の写真館は、レタッチまでが商品",
+body:"中国のカップルは記念写真をきちんと撮る文化がある。衣装・ヘアメイク・撮影・修整までパッケージ。漢服スタジオもあれば、白背景の「証明写真風」が流行っていた時期もある。撮影から受け取りまで数日かかることがあるので、日程の前半に入れておく。",
+q:"情侣写真 影楼 韩式"},
+
+{n:"高鉄の一等座で移動する",area:"各地",loc:"全国",kind:["乗り物","暮らし"],mood:["何もしない"],dec:"◎",decNote:"屋内・暖房完備。冬の長距離移動そのものを体験にできる",time:"半日",cost:"区間による（二等座の1.6倍前後）",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"移動時間を、移動として扱わない",
+body:"時速350kmで4時間走っても中国は終わらない。窓の外の風景が、都市から農村から山岳へ連続的に変わっていくのが見える。一等座は2+2列で足元が広く、席ごとにコンセントとテーブルが付く。",
+q:"高铁 一等座 车窗"},
+
+{n:"夜市で焼烤",area:"各地",loc:"全国",kind:["食","夜遊び"],mood:["食べ倒す","はしゃぐ"],dec:"○",decNote:"屋外の店が多く、冬は屋内席か南方を選ぶ必要がある",time:"1-2h",cost:"80〜180元／2人",band:"低",tourist:"現地の日常",io:"半々",
+copy:"プラスチックの椅子に座って、串を100本頼む",
+body:"羊肉串、茄子、韮菜、生蚝。ビールは常温で出てくることがある。中国の夜の基本形で、どの街にもある。冬は屋内の焼烤店か、南方（西双版納・潮汕・広州）を選ぶと快適に成立する。",
+q:"烧烤 夜市 撸串"},
+
+/* ===== 追加：桂林・陽朔 ===== */
+{n:"印象劉三姐",area:"桂林・陽朔",loc:"陽朔",kind:["観る","景色"],mood:["言葉を失う"],dec:"○",decNote:"冬も上演するが屋外の水上舞台。防寒具の貸出はある",time:"1-2h",cost:"200〜680元",band:"中",tourist:"観光地",io:"屋外",
+copy:"漓江そのものを舞台にした、張芸謀演出の野外劇",
+body:"12の岩山と2kmの川面を丸ごと使う。地元の漁民数百人が出演し、篝火と赤い布が水面に映る。照明で岩山が浮かび上がった瞬間、昼間に竹筏から見た風景の意味が変わる。",
+q:"印象刘三姐 阳朔"},
+
+{n:"桂林米粉を朝に食べる",area:"桂林・陽朔",loc:"桂林",kind:["食","暮らし"],mood:["中国を知る","食べ倒す"],dec:"◎",decNote:"屋内。朝の冷え込みに効く",time:"1-2h",cost:"10〜20元／人",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"一杯15元。地元の人は一日をこれで始める",
+body:"茹でた米粉に滷水を絡め、揚げ大豆や酸豆角をセルフで載せる。スープは後から自分で注ぐ。観光都市の桂林で最も生活に近い場所が朝の米粉屋で、7時台に行くと客が全員地元の人になる。",
+q:"桂林米粉 卤菜粉"},
+
+{n:"銀子岩の鍾乳洞",area:"桂林・陽朔",loc:"荔浦（陽朔から1h）",kind:["景色"],mood:["じっくり見る"],dec:"★",decNote:"洞内は通年18℃前後。冬は外より暖かい",time:"半日",cost:"90元前後",band:"低",tourist:"観光地",io:"屋内",
+copy:"寒い日の避難先が、そのまま絶景になる",
+body:"カルスト地形の桂林には巨大な鍾乳洞が多い。洞内は一年中18℃程度で、冬は外より暖かい。極彩色のライトアップは好みが分かれるが、規模は圧倒的。天候が崩れた日の代替として持っておくと効く。",
+q:"银子岩 溶洞 桂林"},
+
+{n:"両江四湖の夜",area:"桂林・陽朔",loc:"桂林市内",kind:["夜遊び","乗り物"],mood:["じっくり見る"],dec:"○",decNote:"船上は風が冷たい。屋内キャビンのある船を選ぶ",time:"1-2h",cost:"120〜200元",band:"中",tourist:"観光地",io:"半々",
+copy:"街の真ん中に、湖と川をつないだ環状の水路がある",
+body:"桂林市内の二つの川と四つの湖を運河でつなぎ、夜に船で一周する。日月双塔が金と銀に光り、途中に頭を下げないと通れない低い橋がある。陽朔に移動する前後を桂林市内に一泊する理由になる。",
+q:"两江四湖 桂林 夜游"},
+
+/* ===== 追加：貴州 ===== */
+{n:"青岩古鎮",area:"貴州",loc:"貴陽から1h",kind:["街歩き","食"],mood:["食べ倒す"],dec:"◎",decNote:"貴陽から近く、天候が悪い日でも成立する",time:"半日",cost:"門票10元前後",band:"低",tourist:"観光地",io:"半々",
+copy:"黒い石で組まれた、明代の軍事拠点",
+body:"城壁も門も家も黒い石でできている。貴陽から1時間なので、到着日や出発日に挟める。玫瑰糖、豬脚、鶏辛粉。石畳は濡れると滑るので靴を選ぶこと。",
+q:"青岩古镇 贵阳"},
+
+{n:"萬峰林",area:"貴州",loc:"興義（貴陽から3h）",kind:["景色"],mood:["言葉を失う"],dec:"○",decNote:"冬は田が空くが、朝霧が峰の根元に溜まる確率は上がる",time:"1日",cost:"80元前後",band:"低",tourist:"中間",io:"屋外",
+copy:"円錐形の峰が数百、盆地じゅうに散らばっている",
+body:"桂林と同じ岩山が、川ではなく田んぼの中に無数に立つ。展望台から見ると峰の隙間に集落と畑が収まっていて、人が住んでいる風景としての迫力がある。冬の朝は霧が峰の下半分だけを埋める。",
+q:"万峰林 兴义"},
+
+{n:"加榜梯田",area:"貴州",loc:"従江（黔東南）",kind:["景色","暮らし"],mood:["言葉を失う"],dec:"△",decNote:"冬は稲も水もない。霧か雪が乗った日にだけ成立する。道が悪い",time:"泊まり",cost:"無料＋宿",band:"低",tourist:"中間",io:"屋外",
+copy:"観光地化される前の棚田に、まだ人が住んでいる",
+body:"龍脊より知名度が低く、宿も食堂も苗族の村のものしかない。斜面の等高線に沿って家が点在し、朝は谷から霧が上がってくる。冬に行くなら、景色ではなく村の暮らしを見に行く覚悟が要る。",
+q:"加榜梯田 从江"},
+
+{n:"苗年に当たる",area:"貴州",loc:"黔東南の各村",kind:["暮らし","食","夜遊び"],mood:["中国を知る","はしゃぐ"],dec:"○",decNote:"旧暦10月から村ごとに分散して行われ、11月〜1月にばらける。日程は必ず事前確認",time:"1日",cost:"無料",band:"低",tourist:"現地の日常",io:"屋外",
+copy:"苗族の正月は、村ごとに日付が違う",
+body:"蘆笙が鳴り、銀の冠をつけた女性が輪になって踊り、長テーブルが道に出る。観光客向けの公演ではなく村の年中行事なので、日程が公開されていないことも多く、中国のSNSで直前に調べる必要がある。",
+q:"苗年 苗族 过年 黔东南"},
+
+/* ===== 追加：雲南 ===== */
+{n:"元陽棚田の水鏡",area:"雲南",loc:"紅河（昆明から5h）",kind:["景色"],mood:["言葉を失う"],dec:"○",decNote:"12月中旬から部分的に水が入る。全面が張るのは1月以降で、12月は水面が赤く見える「紅梯田」の時期",time:"泊まり",cost:"門票100元前後＋宿",band:"中",tourist:"中間",io:"屋外",
+copy:"12月から水が入りはじめ、田が赤く染まる",
+body:"ハニ族が1300年かけて刻んだ棚田。水を張った田が空を映す11月〜4月がシーズンで、面積のピークは2月。ただし12月〜1月だけは水面に赤い浮草が広がり、棚田全体が赤くなる。朝は雲海が谷を埋める。",
+q:"元阳梯田 红梯田 云海"},
+
+{n:"翠湖のユリカモメ",area:"雲南",loc:"昆明",kind:["暮らし"],mood:["はしゃぐ"],dec:"★",decNote:"シベリアからの越冬早期がまさに11〜12月。冬にしか成立しない",time:"1-2h",cost:"無料",band:"低",tourist:"現地の日常",io:"屋外",
+copy:"街なかの公園が、数万羽のカモメで埋まる",
+body:"1985年から毎年、ユリカモメが昆明で越冬している。昼間は滇池から市街地の翠湖に飛来し、市民がパンを投げる。手を上げると数十羽が一斉に寄ってくる。昆明を乗り継ぎに使うなら、半日だけ市内に出る理由になる。",
+q:"昆明 翠湖 红嘴鸥"},
+
+{n:"建水古城と朱家花園",area:"雲南",loc:"紅河（昆明から2h）",kind:["街歩き","食"],mood:["じっくり見る"],dec:"◎",decNote:"温暖で乾季。観光客が少ない",time:"1日",cost:"門票50元前後",band:"低",tourist:"中間",io:"半々",
+copy:"雲南の古城で、いちばん生活が残っている",
+body:"麗江や大理と違って観光地化が浅く、住民が普通に暮らしている。朱家花園は清代の私邸で部屋数が200を超える。建水の焼豆腐は、炭火で焼いた小さな豆腐を、食べた数をトウモロコシの粒で数えて精算する。",
+q:"建水古城 朱家花园 烧豆腐"},
+
+{n:"束河古鎮",area:"雲南",loc:"麗江",kind:["街歩き","だらだら"],mood:["何もしない"],dec:"◎",decNote:"麗江古城より風が弱く、日中は暖かい",time:"半日",cost:"無料",band:"低",tourist:"中間",io:"屋外",
+copy:"麗江古城の混雑から、車で15分逃げる",
+body:"麗江古城の北にある小さなナシ族の集落。同じ水路と石畳だが人が半分以下で、犬が道の真ん中で寝ている。麗江に泊まるなら、宿を古城ではなく束河に取るという選択肢がある。",
+q:"束河古镇 丽江"},
+
+{n:"瀘沽湖",area:"雲南",loc:"麗江から6h",kind:["景色","暮らし"],mood:["言葉を失う","中国を知る"],dec:"△",decNote:"標高2700m。冬は路面凍結の可能性があり、片道6時間の山道",time:"泊まり",cost:"門票70元＋宿",band:"中",tourist:"中間",io:"屋外",
+copy:"母系社会が、今も続いている湖",
+body:"モソ人が暮らす湖。家系が母方で継がれ、男性が夜に女性の家を訪ねる「走婚」の習慣が残る。冬は水が最も澄み、無風の朝は湖面が完全な鏡になる。ただし移動が行程を大きく食う。",
+q:"泸沽湖 摩梭 走婚"},
+
+/* ===== 追加：福建・潮汕 ===== */
+{n:"廈門大学と沙坡尾",area:"福建・潮汕",loc:"厦門",kind:["街歩き","暮らし"],mood:["じっくり見る","中国を知る"],dec:"◎",decNote:"温暖。12月は学期中でキャンパスが動いている",time:"半日",cost:"無料（要事前予約）",band:"低",tourist:"中間",io:"屋外",
+copy:"中国で最も美しいと言われるキャンパスを歩く",
+body:"海に面した廈門大学は、事前予約すれば外部の人間も入れる。芙蓉湖と嘉庚建築、そして学生食堂。隣接する沙坡尾はかつての漁港をリノベした一帯で、係留された古い漁船とカフェが同居している。",
+q:"厦门大学 沙坡尾"},
+
+{n:"泉州の提線木偶戯",area:"福建・潮汕",loc:"泉州",kind:["観る"],mood:["じっくり見る","言葉を失う"],dec:"◎",decNote:"屋内。通年上演していて天候に左右されない",time:"1-2h",cost:"30〜80元",band:"低",tourist:"中間",io:"屋内",
+copy:"人形一体に、30本以上の糸がつながっている",
+body:"泉州の提線木偶は千年以上の歴史を持ち、一体を操る糸が30〜40本ある。人形が筆で字を書き、茶を注ぎ、傘を回す。言葉がわからなくても手の動きだけで見ていられる、言語障壁の最も低い伝統芸能。",
+q:"泉州 提线木偶"},
+
+{n:"崇武古城の石の街",area:"福建・潮汕",loc:"恵安（泉州から1h）",kind:["街歩き","暮らし"],mood:["じっくり見る"],dec:"○",decNote:"海風が強く、冬は気温より体感が下がる",time:"半日",cost:"45元前後",band:"低",tourist:"中間",io:"屋外",
+copy:"花崗岩で組まれた明代の海防城と、恵安女",
+body:"倭寇に備えて築かれた石造りの城が、海に面してそのまま残る。周辺は石彫の産地で、家も塀も墓も石。頭巾と極端に短い上着という独特の服装の「恵安女」が、今も畑と港に出ている。",
+q:"崇武古城 惠安女"},
+
+{n:"武夷山の岩茶",area:"福建・潮汕",loc:"南平（厦門から4h）",kind:["食","景色","だらだら"],mood:["じっくり見る","何もしない"],dec:"○",decNote:"茶摘みの季節ではないが、焙煎済みの茶を飲む分には通年。山は冷える",time:"泊まり",cost:"門票140元前後＋宿",band:"中",tourist:"観光地",io:"半々",
+copy:"岩の割れ目に生えた茶樹から、大紅袍が採れる",
+body:"丹霞地形の赤い岩壁の隙間に茶畑がある。九曲渓を竹筏で下りながら両岸を見上げ、降りたところで岩茶を飲む。烏龍茶の最高峰とされる大紅袍の母樹が、崖の途中に6株だけ残っている。",
+q:"武夷山 岩茶 九曲溪"},
+
+/* ===== 追加：四川・重慶 ===== */
+{n:"李子壩のモノレール",area:"四川・重慶",loc:"重慶",kind:["乗り物"],mood:["はしゃぐ"],dec:"◎",decNote:"通年。車内は暖房が効いている",time:"1-2h",cost:"地下鉄運賃のみ",band:"低",tourist:"観光地",io:"半々",
+copy:"19階建てマンションの、6階から8階を電車が貫通していく",
+body:"重慶軌道交通2号線は住宅の中を通り抜ける。下の広場から見上げると、本当にビルに電車が吸い込まれていく。乗る側からも、部屋の窓と同じ高さを走っている感覚がわかる。撮影用の展望台が整備された。",
+q:"李子坝 轻轨 穿楼"},
+
+{n:"川劇の変臉",area:"四川・重慶",loc:"成都",kind:["観る"],mood:["言葉を失う","はしゃぐ"],dec:"◎",decNote:"屋内。冬の夜の定番",time:"1-2h",cost:"120〜300元",band:"中",tourist:"観光地",io:"屋内",
+copy:"顔の前で手を振るだけで、仮面が別の色に変わる",
+body:"仕掛けは今も非公開で、伝承者が限られている。茶館形式の劇場では、変臉のほかに火吹き、手影絵、皮影戯が続く。どうやって変えているのかは、何度見てもわからない。",
+q:"川剧 变脸 成都"},
+
+{n:"都江堰と青城山",area:"四川・重慶",loc:"成都から1h",kind:["街歩き"],mood:["じっくり見る"],dec:"○",decNote:"冬は青城山に雪が乗る日がある。石段が滑る",time:"1日",cost:"門票80元＋90元",band:"中",tourist:"観光地",io:"屋外",
+copy:"2200年前に作られ、今も現役で水を分けている",
+body:"秦の時代の治水施設が、ダムを一切使わず川の流れだけで水を分け、成都平原を潤し続けている。隣の青城山は道教の聖地で、木造の楼閣が霧の中に建つ。世界遺産だが、動いている土木構造物として見ると面白い。",
+q:"都江堰 青城山"},
+
+{n:"峨眉山の雪と温泉",area:"四川・重慶",loc:"楽山（成都から2h）",kind:["景色","だらだら"],mood:["言葉を失う","何もしない"],dec:"○",decNote:"金頂は標高3079mで冬は完全な雪山。麓に温泉があり組み合わせが効く",time:"泊まり",cost:"門票160元＋索道＋温泉",band:"高",tourist:"観光地",io:"半々",
+copy:"雪の金頂に登ってから、麓の温泉に沈む",
+body:"金頂の巨大な普賢菩薩像が、雪と雲海の上に立つ。冬は雲海の発生率が高い。降りた先の報国寺周辺に温泉があり、登山と温泉が1泊で繋がる。猿が食べ物を奪いに来るので袋は見せないこと。",
+q:"峨眉山 金顶 雪 温泉"},
+
+/* ===== 追加：江南 ===== */
+{n:"外灘から浦東を見る",area:"江南",loc:"上海",kind:["景色","夜遊び"],mood:["言葉を失う"],dec:"○",decNote:"川風が強く、冬の夜は体感が氷点下近くまで落ちる",time:"1-2h",cost:"無料",band:"低",tourist:"観光地",io:"屋外",
+copy:"背中は1920年代、正面は632m。その落差が上海の全部",
+body:"背後に租界時代の石造建築が並び、川の向こうに超高層群が立つ。冬は空気が澄んで対岸のディテールまで見える代わりに、風で長居できない。セントレアから直行便で着いた、その日の夜に行ける。",
+q:"外滩 陆家嘴 夜景"},
+
+{n:"小籠包と生煎を食べ比べる",area:"江南",loc:"上海",kind:["食"],mood:["食べ倒す"],dec:"◎",decNote:"屋内。朝から開いている",time:"1-2h",cost:"60〜150元／2人",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"底を焼くか蒸すかで、別の食べ物になる",
+body:"小籠包は蒸し、生煎は底を焼いて肉汁を閉じ込める。上海の朝は生煎と豆漿。老舗と路地の店を二軒はしごすると、値段が3倍違って味の差は好みの範囲だとわかる。最初の一口は必ず火傷する。",
+q:"上海 生煎 小笼包"},
+
+{n:"和平飯店のジャズバー",area:"江南",loc:"上海",kind:["観る","夜遊び"],mood:["じっくり見る"],dec:"◎",decNote:"完全屋内。冬の夜の逃げ場になる",time:"1-2h",cost:"200〜400元／人",band:"高",tourist:"中間",io:"屋内",
+copy:"平均年齢80歳のバンドが、1930年代の曲を演奏している",
+body:"外灘の和平飯店で、老年爵士楽団が1980年から演奏を続けている。メンバーは入れ替わっても、レパートリーは戦前の上海の流行歌とスタンダードのまま。租界時代の内装が残っている。予約推奨。",
+q:"和平饭店 老年爵士乐队"},
+
+{n:"紹興の黄酒",area:"江南",loc:"紹興（杭州から30分）",kind:["食"],mood:["食べ倒す"],dec:"★",decNote:"黄酒は温めて飲む酒で、冬が本番",time:"1日",cost:"100〜200元",band:"低",tourist:"中間",io:"半々",
+copy:"温めた紹興酒を、茴香豆で飲む",
+body:"魯迅の故郷。小説に出てくる咸亨酒店が実在し、立ち飲みのカウンターで温めた黄酒と茴香豆が出る。水路は烏篷船（足で櫂を漕ぐ小舟）で移動できる。日本で飲む紹興酒とは別物だとわかる。",
+q:"绍兴 黄酒 咸亨酒店 乌篷船"},
+
+/* ===== 追加：北京・西安 ===== */
+{n:"慕田峪長城の雪",area:"北京・西安",loc:"北京から2h",kind:["景色"],mood:["言葉を失う"],dec:"○",decNote:"冬は観光客が激減して独占できる。積雪すると閉鎖される区間がある",time:"1日",cost:"門票45元＋索道",band:"中",tourist:"観光地",io:"屋外",
+copy:"冬の長城には、ほとんど人がいない",
+body:"八達嶺より遠いぶん空いている慕田峪は、冬になるとさらに人が消える。雪が乗った城壁が尾根づたいにどこまでも続く。下りにトボガンの滑り台があり、二人で滑って降りられる。風が強烈なので完全防寒で。",
+q:"慕田峪长城 雪"},
+
+{n:"兵馬俑",area:"北京・西安",loc:"西安から1h",kind:["観る"],mood:["言葉を失う","じっくり見る"],dec:"◎",decNote:"巨大な屋内の覆屋。暖房はないが風は防げる。冬は行列が短い",time:"1日",cost:"120元前後",band:"中",tourist:"観光地",io:"屋内",
+copy:"8000体、ひとつとして同じ顔がない",
+body:"写真で見て知っているつもりの場所だが、1号坑に入った瞬間の奥行きは実物でしか出ない。全て個別の顔で、元は彩色されていた。冬は待ち時間が短く、坑の縁に立っていられる時間が長く取れる。",
+q:"兵马俑 一号坑"},
+
+{n:"天壇の朝",area:"北京・西安",loc:"北京",kind:["暮らし"],mood:["中国を知る","じっくり見る"],dec:"◎",decNote:"冬でも老人は毎朝来る。むしろ回廊の密度は冬のほうが高い",time:"半日",cost:"門票15元＋祈年殿20元",band:"低",tourist:"中間",io:"屋外",
+copy:"世界遺産の回廊が、朝は老人の部室になっている",
+body:"開門直後の天壇公園は観光地ではなく、北京の高齢者のコミュニティセンター。長い回廊でトランプ、合唱、京劇の練習、剣舞、後ろ歩き。祈年殿を見るのは後回しでいい。中国の老後が最も濃く見える場所。",
+q:"天坛公园 早晨 老人"},
+
+{n:"798芸術区",area:"北京・西安",loc:"北京",kind:["街歩き","観る"],mood:["じっくり見る"],dec:"○",decNote:"移動は屋外だが、ギャラリー内は暖房あり",time:"半日",cost:"無料〜100元",band:"低",tourist:"中間",io:"半々",
+copy:"東ドイツが設計した兵器工場が、丸ごと現代美術になった",
+body:"1950年代のバウハウス様式の工場をアーティストが占拠して生まれた地区。むき出しの配管と当時のスローガンが残る建物にギャラリーが入る。展示の当たり外れは大きいが、建物と街区自体が見もの。",
+q:"798艺术区 北京"},
+
+/* ===== 追加：広東・香港 ===== */
+{n:"香港の夜景と茶餐廳",area:"広東・香港",loc:"香港",kind:["景色","食","夜遊び"],mood:["食べ倒す","言葉を失う"],dec:"◎",decNote:"12月で20℃前後。セントレアから直行便がある",time:"泊まり",cost:"宿が高い",band:"高",tourist:"観光地",io:"半々",
+copy:"セントレアから直行便で行ける、唯一の亜熱帯",
+body:"ビクトリアピークからの夜景、天星小輪で対岸に渡る7分、茶餐廳の菠蘿油と絲襪奶茶。通貨も言語も制度も本土とは違い、中国国内から行く場合も入境手続きは別扱いになる。",
+q:"香港 太平山 茶餐厅"},
+
+{n:"深圳・華強北",area:"広東・香港",loc:"深圳",kind:["暮らし"],mood:["はしゃぐ"],dec:"◎",decNote:"完全屋内のビル群。天候に一切左右されない",time:"半日",cost:"買い物次第",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"電子部品のビルが、何棟も積み上がっている",
+body:"世界最大の電子部品市場。フロア一面が抵抗器の店、その上の階が全部カメラモジュール、という密度で埋まっている。買うものがなくても、供給網の物量を直接見る体験として強い。",
+q:"华强北 电子市场 深圳"},
+
+{n:"順徳で食べる",area:"広東・香港",loc:"仏山・順徳（広州から40分）",kind:["食"],mood:["食べ倒す"],dec:"◎",decNote:"温暖で屋内。冬でも問題なし",time:"1日",cost:"200〜400元／2人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"広東料理の本当の産地は、広州ではなく順徳だと言われる",
+body:"ユネスコ食文化創造都市。淡水魚を薄造りにする魚生、双皮奶、桑拿鶏、米を濾した粥で魚を煮る毋米粥。観光地がほとんどないので、食べるためだけに行く街になる。",
+q:"顺德 美食 鱼生 双皮奶"},
+
+{n:"マカオ",area:"広東・香港",loc:"澳門",kind:["街歩き","食"],mood:["はしゃぐ"],dec:"◎",decNote:"12月で20℃前後。屋内施設が充実していて雨でも成立する",time:"1日",cost:"交通＋食事",band:"中",tourist:"観光地",io:"半々",
+copy:"ポルトガルの街並みと、桁違いのカジノが隣り合う",
+body:"聖ポール天主堂跡と石畳の旧市街を歩き、エッグタルトを食べ、夜は巨大なカジノリゾートを冷やかす。香港から高速船かバスで1時間。ここも本土とは別の入境手続きが要る。",
+q:"澳门 大三巴 葡挞"},
+
+/* ===== 追加：普通の遊び ===== */
+{n:"寝台列車で一晩移動する",area:"各地",loc:"全国",kind:["乗り物","暮らし"],mood:["中国を知る","何もしない"],dec:"◎",decNote:"車内は暖房完備。冬の長距離移動を宿代ごと回収できる",time:"泊まり",cost:"軟臥で300〜600元",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"宿代を払わずに、寝ている間に800km移動する",
+body:"高鉄が通らない区間や夜行便で使う。軟臥は4人個室、動臥は高速鉄道の寝台。消灯後、通路の窓から真っ暗な中国を見ている時間がある。他人と同室になるので、向き不向きは分かれる。",
+q:"卧铺 火车 软卧 动卧"},
+
+{n:"広場舞に混ざる",area:"各地",loc:"全国",kind:["暮らし","体験"],mood:["はしゃぐ","中国を知る"],dec:"○",decNote:"屋外。冬でもやっているが、南方の夜は底冷えする",time:"1-2h",cost:"無料",band:"低",tourist:"現地の日常",io:"屋外",
+copy:"夕方の広場で、おばさんたちが一斉に踊っている",
+body:"中国のあらゆる広場で夜7時ごろから始まる。振り付けは単純な繰り返しで、後ろのほうに立てば普通に混ざれる。誰も気にしない。中国の公共空間の使い方が日本と根本的に違うことが、体でわかる。",
+q:"广场舞 大妈"},
+
+{n:"新茶飲を飲み比べる",area:"各地",loc:"全国",kind:["食"],mood:["中国を知る","食べ倒す"],dec:"◎",decNote:"ホットで頼めば、冬の街歩きの燃料になる",time:"1-2h",cost:"10〜25元／杯",band:"低",tourist:"現地の日常",io:"半々",
+copy:"霸王茶姫、喜茶、蜜雪冰城。1杯15元の戦争",
+body:"中国の茶飲料チェーンは日本のコンビニコーヒーに相当する日常インフラで、店舗数も競争も桁が違う。アプリで注文して受け取るのが標準で、店頭に並ぶ列とは別になっている。ブランドごとに客層がはっきり分かれている。",
+q:"霸王茶姬 喜茶 蜜雪冰城"},
+
+{n:"朝食を屋台で食べる",area:"各地",loc:"全国",kind:["食","暮らし"],mood:["中国を知る","食べ倒す"],dec:"◎",decNote:"朝の冷え込みに熱い豆漿が効く。6〜9時限定",time:"1-2h",cost:"10〜20元／2人",band:"低",tourist:"現地の日常",io:"半々",
+copy:"中国の朝食は、家で作らない",
+body:"豆漿と油条、包子、煎餅果子、腸粉、熱乾麺。地域ごとに全く違い、南北で別の食文化になる。二人で合計10元程度。中国人が家で朝食を作らない理由が、店の数と値段を見ると一発でわかる。",
+q:"早餐 豆浆油条 煎饼果子"},
+
+{n:"電競酒店に泊まる",area:"各地",loc:"全国",kind:["だらだら","夜遊び"],mood:["はしゃぐ","中国を知る"],dec:"◎",decNote:"完全屋内。天候が崩れた一日を丸ごと潰せる",time:"泊まり",cost:"150〜400元／室",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"部屋にゲーミングPCが2台並んでいるホテル",
+body:"中国の若者の間で定着した宿泊形態。ハイエンドPCが人数分置かれ、ゲーミングチェアとモニターが並ぶ。普通のビジネスホテルと同額か、それより安いことも多い。雨の一日をここで潰すという選択肢が持てる。",
+q:"电竞酒店"},
+
+/* ===== 追加：山東・青島（直行便あり） ===== */
+{n:"八大関とドイツ租界の建物",area:"山東・青島",loc:"青島",kind:["街歩き"],mood:["じっくり見る"],dec:"○",decNote:"冬は氷点下近く海風が強いが、暖房のある屋内に逃げられる街",time:"半日",cost:"無料",band:"低",tourist:"中間",io:"屋外",
+copy:"20か国ぶんの建築様式が、10本の道に並んでいる",
+body:"ドイツ租界時代の別荘群が、通りごとに違う国の様式で建っている。道の名前は万里の長城の関所から取られ、それぞれ違う街路樹が植えてある。セントレアから直行便で行ける数少ない街のひとつ。",
+q:"青岛 八大关 德国建筑"},
+
+{n:"青島ビールの原漿を飲む",area:"山東・青島",loc:"青島",kind:["食"],mood:["食べ倒す","中国を知る"],dec:"◎",decNote:"屋内。工場直送の生ビールは通年",time:"1-2h",cost:"60〜150元／2人",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"ビニール袋に入れた生ビールを、街で買って飲む",
+body:"青島では量り売りの原漿（無濾過の生ビール）をビニール袋で持ち帰る文化がある。ストローを挿して飲む。工場併設の博物館では出来たてが飲め、日本で飲む青島ビールとは別物だとわかる。",
+q:"青岛啤酒 原浆 塑料袋"},
+
+{n:"市場で買った魚を、隣の店で焼いてもらう",area:"山東・青島",loc:"青島",kind:["食","暮らし"],mood:["食べ倒す","中国を知る"],dec:"◎",decNote:"冬は牡蠣とナマコが旬。調理は屋内の食堂で",time:"1-2h",cost:"100〜250元／2人",band:"低",tourist:"現地の日常",io:"半々",
+copy:"自分で選んだ海鮮を、加工費だけで料理してもらう",
+body:"青島の市場では、買った魚介を近くの食堂に持ち込むと調理費だけで出してくれる「加工」の仕組みがある。冬は牡蠣とナマコの季節。値段の交渉から皿が出るまでが、ひと続きの体験になる。",
+q:"青岛 海鲜市场 加工"},
+
+{n:"泰山に登る",area:"山東・青島",loc:"泰安（青島から3h）",kind:["景色"],mood:["言葉を失う"],dec:"△",decNote:"冬の山頂は氷点下10℃前後で石段が凍る。防寒と滑り止めが必須",time:"1日",cost:"門票115元＋索道",band:"中",tourist:"観光地",io:"屋外",
+copy:"歴代の皇帝が登った、6600段の石段",
+body:"五岳の筆頭。石段沿いに二千年ぶんの磨崖碑が彫り込まれている。冬は登山客が減り、空気が澄んで山頂からの視界が最も伸びる。ただし凍結するので、夜通し登るのはやめたほうがいい。",
+q:"泰山 冬季 日出"},
+
+/* ===== 追加：湖南・湖北 ===== */
+{n:"文和友",area:"湖南・湖北",loc:"長沙",kind:["食"],mood:["食べ倒す","はしゃぐ"],dec:"◎",decNote:"完全屋内。天候に一切左右されない",time:"1-2h",cost:"100〜200元／2人",band:"低",tourist:"観光地",io:"屋内",
+copy:"ビルの中に、1980年代の団地が丸ごと再現されている",
+body:"7階分の吹き抜けに、崩れかけた集合住宅と看板と電線を再現した巨大な飲食施設。中に実在の老舗が入っている。作り物だが物量で押し切ってくる。中国のZ世代の空間感覚が最もよく出ている場所。",
+q:"文和友 长沙"},
+
+{n:"茶顔悦色を飲む",area:"湖南・湖北",loc:"長沙",kind:["食"],mood:["中国を知る"],dec:"◎",decNote:"ホットあり。長沙市内に数百店舗ある",time:"1-2h",cost:"15〜20元／杯",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"長沙にしかない、行列のできる茶飲料",
+body:"中国の新茶飲ブームを作った一つで、長沙とその周辺以外にほとんど出店しない。中国画をあしらった紙コップに、チーズクリームを載せた茶。行列そのものが名物になっていて、待つことが観光になっている。",
+q:"茶颜悦色 长沙"},
+
+{n:"解放西路の夜",area:"湖南・湖北",loc:"長沙",kind:["夜遊び"],mood:["はしゃぐ"],dec:"◎",decNote:"完全屋内の店が並ぶ。冬の夜の行き先になる",time:"1-2h",cost:"200〜500元／2人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"中国でいちばん夜が長い街だと言われている",
+body:"長沙の解放西路は数百メートルにバーとクラブが密集し、深夜2時が最も混む。中国の若者の夜の遊び方を、最も高い密度で見られる場所。騒がしさが苦手なら向かない。",
+q:"长沙 解放西路 酒吧"},
+
+{n:"岳麓書院と橘子洲",area:"湖南・湖北",loc:"長沙",kind:["街歩き"],mood:["じっくり見る"],dec:"○",decNote:"屋外中心。冬の長沙は湿って底冷えする",time:"半日",cost:"門票50元前後",band:"低",tourist:"中間",io:"屋外",
+copy:"976年創建の学校が、今の大学の敷地とつながっている",
+body:"千年続く書院が、湖南大学のキャンパスと地続きになっている。木造の講堂と碑林。川の中州の橘子洲には巨大な毛沢東の頭像がある。長沙の新旧が一日で見える組み合わせ。",
+q:"岳麓书院 橘子洲"},
+
+{n:"張家界の岩峰",area:"湖南・湖北",loc:"張家界",kind:["景色"],mood:["言葉を失う"],dec:"○",decNote:"冬は霧と雪で幻想的になるが索道が止まる日がある。閑散期で行列はない",time:"泊まり",cost:"門票225元＋索道",band:"高",tourist:"観光地",io:"屋外",
+copy:"垂直に立った砂岩の柱が、3000本以上",
+body:"『アバター』の浮遊山のモデル。冬は霧が谷を埋め、柱の上部だけが雲の上に出る。雪が乗ると水墨画になる。夏の大混雑が嘘のように空いていて、袁家界の展望台を独占できることがある。",
+q:"张家界 冬季 雪 云海"},
+
+{n:"天門山のガラス桟道",area:"湖南・湖北",loc:"張家界",kind:["景色","乗り物"],mood:["言葉を失う","はしゃぐ"],dec:"○",decNote:"冬は凍結で桟道が閉鎖されることがある",time:"1日",cost:"門票275元前後",band:"高",tourist:"観光地",io:"屋外",
+copy:"崖に張り出したガラスの床を、二人で歩けるか",
+body:"全長7455mのロープウェイで山頂まで上がり、垂直の崖に貼りついたガラスの通路を歩く。山を貫通する天門洞まで999段の階段。高所恐怖症なら索道の時点で厳しい。",
+q:"天门山 玻璃栈道 张家界"},
+
+{n:"鳳凰古城の夜",area:"湖南・湖北",loc:"湘西（張家界から4h）",kind:["街歩き","景色"],mood:["何もしない"],dec:"○",decNote:"冬は川霧が出る。閑散期で宿が安い",time:"泊まり",cost:"無料＋宿",band:"低",tourist:"観光地",io:"屋外",
+copy:"川の上に、脚だけで立った木造家屋が並ぶ",
+body:"沱江の両岸に吊脚楼が並び、夜になると全部の灯りが水面に映る。ミャオ族とトゥチャ族の街。観光地化は進んでいるが、川に打たれた飛び石を渡って対岸に行く体験は残っている。",
+q:"凤凰古城 夜景 吊脚楼"},
+
+/* ===== 追加：安徽・江西 ===== */
+{n:"黄山の冬",area:"安徽・江西",loc:"黄山（上海から3h）",kind:["景色"],mood:["言葉を失う"],dec:"○",decNote:"冬は雲海と霧氷の発生率が最も高い。ただし積雪で閉鎖される区間がある",time:"泊まり",cost:"門票190元＋索道＋山上の宿",band:"高",tourist:"観光地",io:"屋外",
+copy:"松と岩と雲海。水墨画がどこから来たのかがわかる",
+body:"冬の黄山は雲海の発生率が最も高く、松の枝に霧氷が付く。山上のホテルに泊まれば日の出に間に合う。中国の山水画の構図が、抽象ではなく写生だったと理解する場所。防寒とアイゼンが要る。",
+q:"黄山 冬季 云海 雾凇"},
+
+{n:"宏村と徽州の白壁",area:"安徽・江西",loc:"黟県（黄山から1h）",kind:["街歩き"],mood:["じっくり見る"],dec:"◎",decNote:"冬は観光客と写生の学生が減り、村が静かになる",time:"半日",cost:"門票104元前後",band:"低",tourist:"観光地",io:"屋外",
+copy:"村全体が牛の形に設計され、水路が体内を巡っている",
+body:"白い壁と黒い瓦の徽州建築。村は風水に基づいて牛の形に設計され、水路が全ての家の前を通るよう引かれている。月沼という半円の池に建物が映る。『グリーン・デスティニー』の舞台。",
+q:"宏村 徽州 月沼"},
+
+{n:"婺源の雪の村",area:"安徽・江西",loc:"江西（黄山から2h）",kind:["景色","暮らし"],mood:["じっくり見る"],dec:"○",decNote:"菜の花は3月。冬は雪が乗った斜面の集落を見る季節",time:"1日",cost:"門票60〜120元",band:"低",tourist:"中間",io:"屋外",
+copy:"菜の花で有名な村を、あえて何もない季節に見る",
+body:"春の一面の黄色で知られるが、冬は白壁の家と裸の棚田に霧が降り、色の抜けた版画のようになる。篁嶺は斜面に貼りついた集落で、家々が軒先に作物を干す。雪が積もると完全に別の場所になる。",
+q:"婺源 篁岭 冬季 雪"},
+
+{n:"景徳鎮で轆轤を回す",area:"安徽・江西",loc:"景徳鎮",kind:["体験"],mood:["はしゃぐ"],dec:"◎",decNote:"完全屋内。天候に関係なく成立する",time:"半日",cost:"100〜300元／人",band:"中",tourist:"中間",io:"屋内",
+copy:"千年続く磁器の街で、二人ぶんの器を作る",
+body:"景徳鎮は宋代から皇室の磁器を焼いてきた街で、今も工房が街じゅうにある。体験工房で轆轤を回し、絵付けをして焼いてもらう。焼き上がりは後日発送になるので、帰国後にもう一度だけ旅が戻ってくる。",
+q:"景德镇 陶艺体验 拉坯"},
+
+{n:"陶溪川の夜市",area:"安徽・江西",loc:"景徳鎮",kind:["夜遊び"],mood:["じっくり見る"],dec:"○",decNote:"屋外の市。開催は週末中心なので日程を確認",time:"1-2h",cost:"買い物次第",band:"低",tourist:"現地の日常",io:"屋外",
+copy:"美大生が自分で焼いた器を、自分で売っている",
+body:"廃工場をリノベした一帯で開かれる市。全国から集まった若い作家が露店に自作を並べる。量産品ではないものが数十元から買える。土産を「誰が作ったか知っている物」にできる、数少ない場所。",
+q:"陶溪川 景德镇 集市"},
+
+/* ===== 追加：江南 ===== */
+{n:"明孝陵の石像路",area:"江南",loc:"南京",kind:["街歩き"],mood:["じっくり見る"],dec:"◎",decNote:"冬は落葉して石像の輪郭がよく見える。人が少ない",time:"半日",cost:"門票70元前後",band:"低",tourist:"中間",io:"屋外",
+copy:"象、駱駝、麒麟の石像が、600年間並んで立っている",
+body:"明の初代皇帝の陵墓に続く参道に、実在と架空の動物の巨大な石像が交互に並ぶ。紅葉の名所として知られるが、葉が落ちた冬は石像そのものが主役になる。中山陵と合わせて半日。",
+q:"明孝陵 石象路 南京"},
+
+{n:"南京の鴨を食べる",area:"江南",loc:"南京",kind:["食"],mood:["食べ倒す"],dec:"◎",decNote:"屋内。冬は鴨血粉絲湯が効く",time:"1-2h",cost:"80〜150元／2人",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"南京の人は、年間一億羽の鴨を食べていると言われる",
+body:"塩水鴨は茹でて塩で締めた冷菜で、北京ダックとは全く別物。鴨血粉絲湯は鴨の血の凝固物と内臓を春雨のスープに入れたもので、寒い日に効く。屋台でも老舗でも同じものが出てくる。",
+q:"南京 盐水鸭 鸭血粉丝汤"},
+
+{n:"評弾を茶館で聴く",area:"江南",loc:"蘇州",kind:["観る","だらだら"],mood:["何もしない"],dec:"◎",decNote:"屋内。茶と一緒に午後をまるごと潰せる",time:"1-2h",cost:"30〜80元",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"三弦と琵琶で、蘇州語の物語を語る",
+body:"蘇州の茶館で午後にかかる語り芸。標準中国語ではなく蘇州語なので、中国語話者でも聞き取れないことがある。意味を追うのを諦めて、音として聴きながら茶を飲む時間になる。地元の老人に混ざって座る。",
+q:"苏州评弹 茶馆"},
+
+/* ===== 追加：広東・香港 ===== */
+{n:"沙面と永慶坊",area:"広東・香港",loc:"広州",kind:["街歩き"],mood:["じっくり見る"],dec:"◎",decNote:"12月の広州は20℃前後で歩きやすい",time:"半日",cost:"無料",band:"低",tourist:"中間",io:"屋外",
+copy:"租界の島と、リノベされた広東の長屋",
+body:"沙面はイギリスとフランスの租界だった小さな島で、洋館とガジュマルの並木が残る。永慶坊は騎楼（アーケード付き長屋）を修復した一帯で、古い建物に新しい店が入っている。広州の二つの層。",
+q:"广州 沙面 永庆坊"},
+
+{n:"深水埗を歩く",area:"広東・香港",loc:"香港",kind:["街歩き","暮らし"],mood:["中国を知る"],dec:"◎",decNote:"温暖。屋内の市場と屋外の露店が混在",time:"半日",cost:"無料",band:"低",tourist:"現地の日常",io:"半々",
+copy:"観光地の香港ではない、生活の香港",
+body:"生地、電子部品、玩具、乾物。問屋街と露店が路地ごとに専門化している。古い茶餐廳と唐楼が残り、映画で見た香港はむしろこちらに近い。中環や尖沙咀と同じ街とは思えない。",
+q:"深水埗 香港 街市"},
+
+{n:"叮叮車で端から端まで",area:"広東・香港",loc:"香港",kind:["乗り物"],mood:["何もしない"],dec:"◎",decNote:"二階は窓が開いているが、12月の香港なら快適",time:"1-2h",cost:"3香港ドル",band:"低",tourist:"現地の日常",io:"半々",
+copy:"1904年から走る二階建て路面電車に、60円で乗る",
+body:"香港島を東西に貫く路面電車。どこまで乗っても運賃は一律で、二階の最前列に座ると看板の隙間を縫って進む視点が得られる。終点まで乗り通すと1時間半。移動ではなく乗ること自体が目的になる。",
+q:"香港 叮叮车 电车"},
+
+{n:"開平の碉楼",area:"広東・香港",loc:"江門（広州から2h）",kind:["景色","街歩き"],mood:["言葉を失う"],dec:"◎",decNote:"温暖で、12月の屋外がむしろ快適",time:"1日",cost:"門票80〜180元",band:"中",tourist:"中間",io:"半々",
+copy:"田んぼの中に、ヨーロッパ風の塔が1800棟建っている",
+body:"海外に出た華僑が故郷に送金して建てた、防御機能つきの多層住宅。ギリシャ、ローマ、イスラムの意匠が水田の風景に唐突に立っている。世界遺産だが観光客は少なく、中に住んでいる人もいる。",
+q:"开平碉楼 世界遗产"},
+
+{n:"大芬油画村",area:"広東・香港",loc:"深圳",kind:["体験","街歩き"],mood:["はしゃぐ"],dec:"◎",decNote:"屋内外が混在。天候の影響が小さい",time:"半日",cost:"体験100〜300元",band:"低",tourist:"現地の日常",io:"半々",
+copy:"世界の複製画の相当数が、この一つの村で描かれている",
+body:"路地じゅうが油絵の工房で、ゴッホもモネも量産されている。近年は自作を描く作家も増えた。飛び込みで描かせてくれる工房があり、自分の絵を持ち帰れる。分業が可視化された光景そのものが見もの。",
+q:"大芬油画村 深圳"},
+
+{n:"珠江のナイトクルーズ",area:"広東・香港",loc:"広州",kind:["夜遊び","乗り物","景色"],mood:["何もしない"],dec:"◎",decNote:"12月でも夜20℃前後。甲板に出ていられる",time:"1-2h",cost:"80〜200元",band:"低",tourist:"観光地",io:"半々",
+copy:"600mの広州塔が、色を変えながら川に映る",
+body:"珠江を1時間かけて往復する。両岸の高層ビルが一斉にライトアップされ、橋ごとに色が違う。北方の都市では冬に船に乗るのは無理なので、南に行く場合だけの特権になる。",
+q:"珠江夜游 广州塔"},
+
+/* ===== 追加：海南・北海 ===== */
+{n:"北海の銀灘と老街",area:"海南・北海",loc:"広西・北海",kind:["景色","街歩き"],mood:["何もしない"],dec:"◎",decNote:"12月で18〜22℃。桂林から高鉄でつながる",time:"1日",cost:"無料",band:"低",tourist:"中間",io:"屋外",
+copy:"桂林から高鉄で3時間、そのまま海に出られる",
+body:"24kmの白い砂浜と、清代の騎楼が1.5km続く老街。桂林・陽朔から高鉄でつながっているので、岩山を見たあとに海に出るという行程が組める。涠洲島へのフェリーもここから出る。",
+q:"北海 银滩 老街"},
+
+{n:"海口の騎楼老街と老爸茶",area:"海南・北海",loc:"海口",kind:["街歩き","食","だらだら"],mood:["中国を知る","何もしない"],dec:"◎",decNote:"12月で22〜26℃。冬を完全に回避できる",time:"半日",cost:"20〜50元／2人",band:"低",tourist:"現地の日常",io:"半々",
+copy:"三亜のリゾートではない、海南の生活のほう",
+body:"南洋様式のアーケード街が残る海口では、地元の人が朝から「老爸茶」に集まる。茶と点心で数十元、席は半日使える。三亜が観光地としての海南なら、海口は住んでいる人の海南。",
+q:"海口 骑楼老街 老爸茶"},
+
+{n:"東郊椰林",area:"海南・北海",loc:"文昌（海口から1.5h）",kind:["景色","だらだら"],mood:["何もしない"],dec:"◎",decNote:"12月でも泳げる。中国の冬とは思えない気温",time:"1日",cost:"無料",band:"低",tourist:"中間",io:"屋外",
+copy:"椰子の木が50万本。中国の中の東南アジア",
+body:"文昌の海岸に椰子林が延々と続く。三亜のような開発がされておらず、宿も食堂も素朴。ココナッツを割ってもらってその場で飲み、椰子飯を食べる。ここが12月の中国だということを忘れる。",
+q:"东郊椰林 文昌 海南"},
+
+{n:"離島免税で買う",area:"海南・北海",loc:"三亜・海口",kind:["街歩き"],mood:["はしゃぐ"],dec:"◎",decNote:"完全屋内。雨の日の受け皿になる",time:"半日",cost:"買い物次第",band:"高",tourist:"観光地",io:"屋内",
+copy:"海南島を出るときだけ、免税で買える制度がある",
+body:"中国国内の客でも、海南から本土に戻る際に年間10万元まで免税で買える制度がある。世界最大級の免税店が三亜に建った。中国人の消費行動が最も濃縮された場所で、買わずに見るだけでも面白い。",
+q:"海南 离岛免税 三亚"},
+
+/* ===== 追加：観る ===== */
+{n:"京劇を観る",area:"北京・西安",loc:"北京",kind:["観る"],mood:["じっくり見る"],dec:"◎",decNote:"屋内。冬の夜の定番",time:"1-2h",cost:"150〜400元",band:"中",tourist:"観光地",io:"屋内",
+copy:"歌でも劇でもなく、様式そのものを見る",
+body:"梅蘭芳大劇院や湖広会館で観られる。物語を追えなくても、隈取りの色で役の性格が決まり、袖の動き一つに意味がある。観光客向けの短縮版なら1時間程度で、英語か日本語の字幕が出る。",
+q:"京剧 梅兰芳大剧院"},
+
+{n:"相声を聴く",area:"北京・西安",loc:"北京・天津",kind:["観る"],mood:["中国を知る","はしゃぐ"],dec:"◎",decNote:"屋内。茶館形式で茶とひまわりの種が出る",time:"1-2h",cost:"50〜200元",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"二人組の話芸。客席の笑い方だけでも伝わる",
+body:"日本の漫才に近い伝統話芸で、客は茶を飲みながら聴く。徳雲社が最も有名だがチケットが取れない。言葉を追えなくても、間の取り方と客席の反応から、何が面白いとされているのかは伝わってくる。",
+q:"相声 德云社 茶馆"},
+
+{n:"皮影戯を観る",area:"北京・西安",loc:"西安",kind:["観る"],mood:["じっくり見る"],dec:"◎",decNote:"屋内。小さな劇場で通年上演",time:"1-2h",cost:"50〜150元",band:"低",tourist:"中間",io:"屋内",
+copy:"ロバの革を透かした人形が、布の裏で動いている",
+body:"二千年の歴史を持つ影絵芝居。革を彫って染めた人形を棒で操り、光を当てて布に映す。終演後に裏側を見せてくれることが多く、仕掛けが全部わかる。人形そのものが工芸品として美しい。",
+q:"皮影戏 西安"},
+
+{n:"雑技を観る",area:"北京・西安",loc:"北京・上海",kind:["観る"],mood:["言葉を失う","はしゃぐ"],dec:"◎",decNote:"屋内。言語が一切不要",time:"1-2h",cost:"180〜480元",band:"中",tourist:"観光地",io:"屋内",
+copy:"言葉が一切要らない演目",
+body:"椅子を積み上げて逆立ちし、一台の自転車に十数人が乗る。技術の水準が桁違いで、言語も文脈も要らない。中国語がわからないことが一切ハンデにならない、数少ない選択肢。",
+q:"杂技 北京 朝阳剧场"},
+
+/* ===== 追加：体験 ===== */
+{n:"蠟染を染める",area:"貴州",loc:"丹寨・安順",kind:["体験","暮らし"],mood:["中国を知る"],dec:"◎",decNote:"完全屋内。貴州の悪天候日の受け皿になる",time:"半日",cost:"100〜300元",band:"中",tourist:"中間",io:"屋内",
+copy:"溶かした蝋で描いて、藍の甕に沈める",
+body:"苗族の蠟染は、蝋で布に文様を描いてから藍に浸し、蝋を落とすと白い線が残る。図案は口伝で村ごとに違う。染めた布はそのまま持ち帰れる。手についた藍は数日消えない。",
+q:"苗族 蜡染 体验 丹寨"},
+
+{n:"紮染を染める",area:"雲南",loc:"大理・周城",kind:["体験","暮らし"],mood:["中国を知る","はしゃぐ"],dec:"◎",decNote:"染めは屋内、干すのは屋外。冬の大理は晴天率が高い",time:"半日",cost:"50〜200元",band:"低",tourist:"中間",io:"半々",
+copy:"糸で縛った場所だけが、藍に染まらずに残る",
+body:"白族の絞り染め。布を糸で縛り、板藍根の藍甕に何度も沈める。縛り方で模様が決まるので、開くまで結果がわからない。乾かす時間を含めて半日みておく。",
+q:"周城 白族 扎染 大理"},
+
+{n:"中華料理を習う",area:"四川・重慶",loc:"成都",kind:["体験","食"],mood:["中国を知る","食べ倒す"],dec:"◎",decNote:"完全屋内。雨天の一日を丸ごと潰せる",time:"半日",cost:"200〜500元／人",band:"中",tourist:"中間",io:"屋内",
+copy:"麻婆豆腐を、本場の分量で作って持ち帰る",
+body:"成都には外国人向けの料理教室があり、市場での買い出しから始まるものが多い。豆板醤の量と火の入れ方が日本のレシピと全く違うとわかる。帰国後に再現できるので、旅が家に残る数少ない体験。",
+q:"成都 烹饪课 川菜 cooking class"},
+
+{n:"篆刻で印鑑を彫る",area:"各地",loc:"杭州・西安が本場",kind:["体験"],mood:["じっくり見る"],dec:"◎",decNote:"完全屋内。1〜2時間で完結する",time:"1-2h",cost:"100〜400元",band:"中",tourist:"中間",io:"屋内",
+copy:"石を彫って、二人の名前の印を作る",
+body:"石に名前を彫り、朱肉で押す。杭州の西泠印社が本場で、その場で彫ってもらうこともできるし、自分で彫らせる工房もある。中国では今も契約に印が使われるので、飾りではなく実用品でもある。",
+q:"篆刻 刻章 体验"},
+
+{n:"木版年画を刷る",area:"各地",loc:"天津・蘇州・山東",kind:["体験"],mood:["中国を知る"],dec:"★",decNote:"春節に向けた11〜1月が制作の最盛期。12月はまさにその時期",time:"1-2h",cost:"50〜200元",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"春節前の工房で、正月の絵を自分で刷る",
+body:"門に貼る年画を、色ごとに版を重ねて刷る。旧正月に向けて11月から工房が動き出すので、12月は制作の現場を見られる季節。刷ったものをそのまま持ち帰って、日本の正月に貼れる。",
+q:"木版年画 杨柳青 桃花坞"},
+
+{n:"寺で写経する",area:"各地",loc:"上海・蘇州・北京",kind:["体験","だらだら"],mood:["何もしない"],dec:"◎",decNote:"屋内の写経堂。暖房がない寺もあるので厚着で",time:"1-2h",cost:"無料〜100元",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"筆を持って、一時間だけ何も考えない",
+body:"大きな寺には写経堂があり、筆と経本を貸してくれるところが多い。上海の静安寺、蘇州の寒山寺、北京の雍和宮など。書き終えた紙は寺に納めることも、持ち帰ることもできる。",
+q:"寺庙 抄经 体验"},
+
+{n:"漢服を着て街を歩く",area:"北京・西安",loc:"西安・洛陽",kind:["体験","街歩き"],mood:["はしゃぐ"],dec:"○",decNote:"生地が薄いので下に着込む必要がある。防寒コート込みのプランを選ぶ",time:"半日",cost:"200〜600元／2人",band:"中",tourist:"観光地",io:"屋外",
+copy:"街の半分が漢服を着ている場所がある",
+body:"西安の大唐不夜城周辺では、平日でも漢服姿の人が普通に歩いている。ヘアメイクと着付けと撮影がセットのプランが無数にある。男性用もあるので、二人で着れば浮かない。冬の防寒だけが課題。",
+q:"汉服 西安 大唐不夜城 妆造"},
+
+/* ===== 追加：普通の遊び ===== */
+{n:"剧本杀をやる",area:"各地",loc:"全国",kind:["夜遊び"],mood:["はしゃぐ","中国を知る"],dec:"◎",decNote:"完全屋内。ただし中国語の読解量が多く、二人だけでは成立しないことが多い",time:"半日",cost:"80〜200元／人",band:"中",tourist:"現地の日常",io:"屋内",
+copy:"配役と台本が配られ、全員が嘘をつきながら犯人を探す",
+body:"中国の若者文化の中心にあった遊びで、専門店が街に無数にある。密室逃脱より没入度が高い代わりに、大量の中国語を読む。中国語話者による全面的なサポートと、6人前後の人数が前提になる。",
+q:"剧本杀 门店"},
+
+{n:"麻雀を打つ",area:"各地",loc:"四川が本場",kind:["だらだら"],mood:["中国を知る","はしゃぐ"],dec:"◎",decNote:"完全屋内。成都では茶館でも公園でもやっている",time:"1-2h",cost:"20〜50元／時間",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"ルールが日本と違う。役がほとんどない",
+body:"中国の麻雀は役が単純で、揃えば上がれる。四川では字牌を抜いて三色だけで打つ。成都の茶館は自動卓つきの時間制。日本のルールを知っているほうが最初は混乱する。卓に着いてから教わる形になる。",
+q:"四川麻将 茶馆 血战到底"},
+
+{n:"共享単車で街を流す",area:"各地",loc:"全国",kind:["乗り物"],mood:["何もしない"],dec:"○",decNote:"屋外。南方の日中なら快適だが、北方の冬は指がもたない",time:"1-2h",cost:"1.5〜3元／30分",band:"低",tourist:"現地の日常",io:"屋外",
+copy:"どこで降りても、そのまま乗り捨てられる",
+body:"美団や哈啰の自転車が街じゅうに転がっている。QRを読むだけで解錠でき、30分2元程度。中国の都市は自転車レーンが広く取られ、車道と分離されている区間が多い。",
+q:"共享单车 美团 哈啰"},
+
+{n:"クラブに行く",area:"各地",loc:"上海・成都・長沙",kind:["夜遊び"],mood:["はしゃぐ"],dec:"◎",decNote:"完全屋内。深夜まで開いている",time:"1-2h",cost:"300〜1000元／2人",band:"高",tourist:"現地の日常",io:"屋内",
+copy:"卓を取って座る。踊るより飲むほうが中心",
+body:"中国のクラブは、立って踊るより「卡座」を予約して座り、サイコロゲームをして飲む形式が主流。上海はDJ寄り、成都と長沙は卓文化が濃い。日本のクラブとは構造そのものが違う。",
+q:"夜店 club 上海 卡座"},
+
+{n:"中医で脈を診てもらう",area:"各地",loc:"全国",kind:["だらだら","暮らし"],mood:["中国を知る"],dec:"★",decNote:"完全屋内。冬は「補」の季節とされ、中医の書き入れ時",time:"1-2h",cost:"診察50〜200元",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"手首を触られて、体質を言い当てられる",
+body:"中医院や薬局の診察コーナーで、脈と舌を見て体質を判断してもらえる。「湿が多い」「陽が足りない」といった診断が下り、それに応じた漢方が処方される。信じるかは別として、体系がまるごと違う。",
+q:"中医 把脉 体质 药房"},
+
+{n:"深夜まで開いている書店",area:"各地",loc:"全国",kind:["だらだら"],mood:["何もしない"],dec:"◎",decNote:"完全屋内で暖房完備。夜の避難先として強い",time:"1-2h",cost:"無料",band:"低",tourist:"現地の日常",io:"屋内",
+copy:"鏡張りの吹き抜けに、本が無限に続いて見える",
+body:"鐘書閣や言几又のような、設計に振り切った書店が各都市にある。24時間営業の店もあり、深夜に座って読んでいる人がいる。中国語が読めなくても、装丁と棚の作り方を見ているだけで一時間経つ。",
+q:"钟书阁 最美书店 24小时书店"},
+
+{n:"公園の朝に混ざる",area:"各地",loc:"全国",kind:["暮らし","体験"],mood:["中国を知る","はしゃぐ"],dec:"◎",decNote:"屋外。朝は冷えるが、冬でも人は必ずいる",time:"1-2h",cost:"無料",band:"低",tourist:"現地の日常",io:"屋外",
+copy:"朝6時の公園には、その街の高齢者が全員いる",
+body:"太極拳、剣舞、毽子（羽根蹴り）、合唱、社交ダンス、後ろ歩き。区画ごとに違う集団がいて、混ざっても誰も気にしない。毽子は数分で覚えられるので、輪に入れてもらうのが一番早い。",
+q:"公园 早晨 太极拳 毽子"},
+
+{n:"算命を見てもらう",area:"各地",loc:"寺廟の周辺",kind:["だらだら"],mood:["はしゃぐ","中国を知る"],dec:"◎",decNote:"寺の周辺は年末年始に向けて客が増える時期",time:"1-2h",cost:"50〜300元",band:"低",tourist:"現地の日常",io:"半々",
+copy:"生年月日を渡すと、二人の相性が返ってくる",
+body:"寺の周辺や街角に算命の店がある。生辰八字（生年月日時）から性格と運勢を出す。二人で見てもらうと「合婚」という相性判断になる。当たるかは別として、中国で今も普通に使われている占いの体系が見える。",
+q:"算命 八字 合婚"},
+
+/* ===== 追加：取りこぼし ===== */
+{n:"陽朔でロッククライミング",area:"桂林・陽朔",loc:"陽朔",kind:["体験"],mood:["はしゃぐ"],dec:"★",decNote:"12月は乾季で岩が乾き、暑すぎない。クライミングのベストシーズン",time:"半日",cost:"400〜700元／人",band:"高",tourist:"中間",io:"屋外",
+copy:"陽朔は、アジア屈指のクライミング聖地でもある",
+body:"石灰岩の岩山に数百本のルートが整備され、世界中からクライマーが集まる。初心者向けのガイド付き半日体験があり、経験がなくても登れるルートから始められる。冬は乾季で岩の状態が最も良い。",
+q:"阳朔 攀岩 rock climbing"},
+
+{n:"織金洞",area:"貴州",loc:"畢節（貴陽から2.5h）",kind:["景色"],mood:["言葉を失う"],dec:"★",decNote:"洞内は通年16℃前後。冬は外より暖かい",time:"1日",cost:"120元前後",band:"中",tourist:"中間",io:"屋内",
+copy:"高さ150mの空洞が、地下に広がっている",
+body:"中国最大級の鍾乳洞。最も広い空間は天井まで150mあり、鍾乳石が塔のように立ち上がる。荔波や黄果樹に比べて観光客が少ない。天候が崩れた日に行き先を差し替えられる、貴州の保険になる。",
+q:"织金洞 贵州"}
+];
+
+/* ---------- 移動目安 ---------- */
+const TIMES = [
+  ["上海 → 桂林（空路）","約2時間30分"],
+  ["上海 → 貴陽（空路）","約2時間45分"],
+  ["上海 → 昆明（空路）","約3時間30分"],
+  ["桂林 → 陽朔","30分〜1時間30分"],
+  ["貴陽 → 荔波（高鉄）","約1時間"],
+  ["貴陽 → 凱里（高鉄）","約40分＋バス1時間"],
+  ["昆明 → 大理（高鉄）","約2時間"],
+  ["大理 → 麗江（高鉄）","約1時間40分"],
+  ["昆明 → 西双版納（高鉄）","約3時間20分"],
+  ["厦門 → 泉州（高鉄）","約30分"],
+  ["広州 → 潮汕（高鉄）","約3時間"],
+  ["成都 → 重慶（高鉄）","約1時間20分"],
+  ["上海 → 蘇州（高鉄）","約25分"]
+];
+
+/* ---------- 地図：国境の概形（経度・緯度） ---------- */
+const BORDER = [
+  [73.6,39.4],[75.0,40.6],[80.2,42.2],[82.6,45.1],[85.5,47.2],[87.4,49.1],[90.5,47.8],
+  [94.5,44.4],[97.2,42.8],[101.8,42.5],[105.2,41.7],[109.5,42.5],[111.5,44.4],[115.0,45.4],
+  [119.5,46.6],[117.8,49.6],[120.0,51.6],[122.5,53.4],[125.6,53.0],[127.3,50.2],[130.7,48.8],
+  [134.5,48.3],[133.5,45.5],[131.3,44.0],[130.6,42.9],[128.0,42.0],[124.3,40.0],
+  [121.6,39.0],[122.0,37.4],[119.2,37.1],[120.8,37.8],[122.7,37.4],[120.3,36.0],[119.2,34.5],
+  [120.4,32.6],[121.9,31.0],[121.5,29.9],[122.2,29.2],[120.5,27.2],[119.8,26.0],[118.4,24.5],
+  [116.7,23.4],[114.3,22.5],[113.0,21.9],[110.4,21.2],[109.8,21.4],[108.5,21.6],
+  [106.7,22.8],[104.8,22.7],[103.3,22.6],[101.8,22.4],[101.1,21.2],[100.1,21.5],[99.2,22.1],
+  [97.5,23.9],[98.7,25.9],[97.5,27.5],[98.2,28.2],[96.2,29.1],[94.7,29.1],[92.1,27.8],
+  [89.1,27.3],[88.1,27.9],[85.8,28.2],[83.4,29.3],[81.2,30.4],[79.0,32.0],[78.7,33.6],
+  [79.5,34.4],[78.0,35.5],[76.0,35.6],[74.5,37.0],[75.0,38.5]
+];
+const HAINAN = [[109.3,19.9],[110.6,20.1],[111.0,19.6],[110.5,18.4],[109.5,18.3],[108.6,19.3]];
+
+/* ---------- 地図上の地名（s＝ラベルを置く向き） ---------- */
+const NODES = [
+  {l:"北京",        lon:116.4, lat:39.9, s:"t"},
+  {l:"青島",        lon:120.4, lat:36.1, s:"r"},
+  {l:"西安",        lon:108.9, lat:34.3, s:"l"},
+  {l:"上海・江南",   lon:121.3, lat:31.3, s:"r"},
+  {l:"黄山・景徳鎮", lon:117.4, lat:29.6, s:"b"},
+  {l:"成都・重慶",   lon:105.3, lat:30.2, s:"l"},
+  {l:"長沙・張家界", lon:111.8, lat:28.7, s:"t"},
+  {l:"貴州",        lon:106.7, lat:26.6, s:"l"},
+  {l:"桂林・陽朔",   lon:110.3, lat:25.1, s:"b"},
+  {l:"雲南",        lon:101.3, lat:25.4, s:"l"},
+  {l:"西双版納",     lon:100.8, lat:22.0, s:"b"},
+  {l:"福建・潮汕",   lon:117.9, lat:24.4, s:"r"},
+  {l:"広州・香港",   lon:113.6, lat:22.8, s:"b"},
+  {l:"海南・北海",   lon:109.7, lat:19.4, s:"b"}
+];
+
+/* ---------- state ---------- */
+const AXES = {
+  kind:["景色","食","観る","体験","だらだら","夜遊び","街歩き","暮らし","乗り物"],
+  area:["桂林・陽朔","貴州","雲南","湖南・湖北","福建・潮汕","広東・香港","海南・北海","四川・重慶","江南","安徽・江西","山東・青島","北京・西安","各地"],
+  mood:["言葉を失う","何もしない","食べ倒す","中国を知る","はしゃぐ","じっくり見る"],
+  dec:["★","◎","○","△"],
+  time:["1-2h","半日","1日","泊まり"],
+  band:["低","中","高"],
+  tourist:["観光地","中間","現地の日常"],
+  io:["屋内","半々","屋外"]
+};
+const AXIS_CLASS = { kind:"k", area:"a", mood:"m" };
+const CHIP_LABEL = { "★":"★ 冬が本番", "◎":"◎ 支障なし", "○":"○ 冬の難あり", "△":"△ 冬は不利" };
+const RANK = {
+  dec:{"★":0,"◎":1,"○":2,"△":3},
+  time:{"1-2h":0,"半日":1,"1日":2,"泊まり":3},
+  band:{"低":0,"中":1,"高":2}
+};
+const sel = { kind:new Set(), area:new Set(), mood:new Set(), dec:new Set(), time:new Set(), band:new Set(), tourist:new Set(), io:new Set() };
+/* ---------- 表示テーマ（自動 → 明 → 暗 の巡回） ---------- */
+const THEME_KEY = "cn-dec-theme";
+const THEME_LABEL = { auto:"◐ 自動", light:"☀ 明るい", dark:"☾ 暗い" };
+let theme = (() => { try { return localStorage.getItem(THEME_KEY) || "auto"; } catch (e) { return "auto"; } })();
+function applyTheme() {
+  if (theme === "auto") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", theme);
+  const b = document.getElementById("theme");
+  if (b) b.textContent = THEME_LABEL[theme];
+}
+applyTheme();
+document.getElementById("theme").onclick = () => {
+  theme = theme === "auto" ? "light" : theme === "light" ? "dark" : "auto";
+  try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+  applyTheme();
+};
+
+/* 書き込めるか。ただし「書けること」は「残ること」を意味しない */
+const STORE_OK = (() => {
+  try { localStorage.setItem("__probe", "1"); localStorage.removeItem("__probe"); return true; }
+  catch (e) { return false; }
+})();
+/* 埋め込み表示か。Safari は埋め込み内のストレージを一時区画に隔離し、閉じると捨てる */
+const EMBEDDED = (() => { try { return window.top !== window.self; } catch (e) { return true; } })();
+/* 前回のセッションで書いた目印が生きていれば、保存が本当に残ると確認できる */
+const PERSIST_PROVEN = (() => {
+  try {
+    if (localStorage.getItem("cn-dec-beacon")) return true;
+    localStorage.setItem("cn-dec-beacon", String(Date.now()));
+  } catch (e) {}
+  return false;
+})();
+/* ---------- ☆をURLに載せる ----------
+   並び順に対するビットマップ＋版ハッシュ。版が違う古いリンクは適用しない。 */
+function fnv1a(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h >>> 0;
+}
+let VERSION = "";
+function encodeFavs() {
+  const bytes = new Uint8Array(Math.ceil(DATA.length / 8));
+  DATA.forEach((d, i) => { if (favs.has(d.id)) bytes[i >> 3] |= 1 << (i & 7); });
+  let bin = "";
+  bytes.forEach(b => { bin += String.fromCharCode(b); });
+  return VERSION + "-" + btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+function decodeFavs(token) {
+  const cut = token.indexOf("-");
+  if (cut < 0) return null;
+  if (token.slice(0, cut) !== VERSION) return "stale";
+  let bin;
+  try { bin = atob(token.slice(cut + 1).replace(/-/g, "+").replace(/_/g, "/")); }
+  catch (e) { return null; }
+  const picked = [];
+  DATA.forEach((d, i) => {
+    const byte = bin.charCodeAt(i >> 3) || 0;
+    if (byte & (1 << (i & 7))) picked.push(d.id);
+  });
+  return picked;
+}
+/* ☆が変わるたびアドレスにも反映する。ブックマークでそのまま持ち運べる */
+function syncHash() {
+  try {
+    history.replaceState(null, "", location.pathname + location.search + (favs.size ? "#f=" + encodeFavs() : ""));
+  } catch (e) {}
+}
+function banner(text, isWarn) {
+  const el = document.getElementById("banner");
+  el.textContent = text;
+  el.classList.toggle("warn", !!isWarn);
+  el.classList.remove("hidden");
+}
+
+/* ☆の識別子はカード名。並び順が変わっても控えが壊れないようにする */
+function loadFavs() {
+  try {
+    const raw = JSON.parse(localStorage.getItem("cn-dec-favs") || "[]");
+    const names = new Set(DATA.map(d => d.n));
+    return new Set(raw
+      .map(v => /^e\d+$/.test(v) ? (DATA[+v.slice(1)] || {}).n : v)   // 旧・連番IDからの移行
+      .filter(v => names.has(v)));
+  } catch (e) { return new Set(); }
+}
+function saveFavs() {
+  try { localStorage.setItem("cn-dec-favs", JSON.stringify([...favs])); } catch (e) {}
+  syncHash();
+}
+let favs = loadFavs();
+let favOnly = false, view = "card", sortKey = null, sortDir = 1;
+
+VERSION = fnv1a(DATA.map(d => d.n).join("\n")).toString(36);
+DATA.forEach(d => { d.id = d.n; d.decRank = RANK.dec[d.dec]; d.timeRank = RANK.time[d.time]; d.bandRank = RANK.band[d.band]; });
+
+/* ---------- build filter chips ---------- */
+document.querySelectorAll(".chips").forEach(box => {
+  const axis = box.dataset.axis;
+  AXES[axis].forEach(v => {
+    const b = document.createElement("button");
+    b.className = "chip " + (AXIS_CLASS[axis] || "");
+    b.textContent = CHIP_LABEL[v] || v;
+    b.setAttribute("aria-pressed","false");
+    b.onclick = () => {
+      if (sel[axis].has(v)) { sel[axis].delete(v); b.setAttribute("aria-pressed","false"); }
+      else { sel[axis].add(v); b.setAttribute("aria-pressed","true"); }
+      render();
+    };
+    box.appendChild(b);
+  });
+});
+
+/* ---------- filtering ---------- */
+function matches(d) {
+  if (favOnly && !favs.has(d.id)) return false;
+  for (const axis of ["kind","mood"]) {
+    if (sel[axis].size && ![...sel[axis]].some(v => d[axis].includes(v))) return false;
+  }
+  for (const axis of ["area","dec","time","band","tourist","io"]) {
+    if (sel[axis].size && !sel[axis].has(d[axis])) return false;
+  }
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  if (q) {
+    const hay = [d.n,d.copy,d.body,d.loc,d.area,d.decNote,d.cost,...d.kind,...d.mood].join(" ").toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  return true;
+}
+
+/* ---------- render ---------- */
+function imgLinks(d) {
+  const g = "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(d.q);
+  const x = "https://www.xiaohongshu.com/search_result?keyword=" + encodeURIComponent(d.q);
+  return `<div class="links"><a href="${g}" target="_blank" rel="noopener">画像を見る ↗</a><a href="${x}" target="_blank" rel="noopener">小紅書 ↗</a></div>`;
+}
+function decClass(v) { return v === "★" ? "d0" : v === "◎" ? "d1" : v === "○" ? "d2" : "d3"; }
+
+function render() {
+  const list = DATA.filter(matches);
+  document.getElementById("shown").textContent = list.length;
+
+  const grid = document.getElementById("grid");
+  const tv = document.getElementById("tableView");
+  const mv = document.getElementById("mapView");
+  const em = document.getElementById("empty");
+  grid.classList.toggle("hidden", view !== "card" || !list.length);
+  tv.classList.toggle("hidden", view !== "table" || !list.length);
+  mv.classList.toggle("hidden", view !== "map");
+  em.classList.toggle("hidden", list.length > 0 || view === "map");
+
+  if (view === "card") {
+    grid.innerHTML = list.map(d => `
+      <article class="card">
+        <div class="card-top">
+          <span class="dec ${decClass(d.dec)}" title="12月適性">${d.dec}</span>
+          <span class="area">${d.area}${d.loc ? " · " + d.loc : ""}</span>
+          <button class="star" data-id="${d.id}" aria-pressed="${favs.has(d.id)}" aria-label="気になるに追加">${favs.has(d.id) ? "★" : "☆"}</button>
+        </div>
+        <h3>${d.n}</h3>
+        <p class="copy">${d.copy}</p>
+        <p class="body">${d.body}</p>
+        <p class="note">12月 ${d.dec}：${d.decNote}</p>
+        <div class="tagrow">
+          ${d.kind.map(k => `<span class="tag k">${k}</span>`).join("")}
+          ${d.mood.map(m => `<span class="tag m">${m}</span>`).join("")}
+        </div>
+        <div class="meta">
+          <span><b>${d.time}</b></span><span><b>${d.cost}</b></span>
+          <span><b>${d.tourist}</b></span><span><b>${d.io}</b></span>
+        </div>
+        ${imgLinks(d)}
+      </article>`).join("");
+  }
+
+  if (view === "table") {
+    let rows = list.slice();
+    if (sortKey) {
+      rows.sort((a,b) => {
+        let av = sortKey === "fav" ? (favs.has(a.id) ? 0 : 1) : a[sortKey];
+        let bv = sortKey === "fav" ? (favs.has(b.id) ? 0 : 1) : b[sortKey];
+        if (Array.isArray(av)) { av = av[0]; bv = bv[0]; }
+        return (av > bv ? 1 : av < bv ? -1 : 0) * sortDir;
+      });
+    }
+    document.getElementById("tbody").innerHTML = rows.map(d => `
+      <tr>
+        <td><button class="star" data-id="${d.id}" aria-pressed="${favs.has(d.id)}" aria-label="気になるに追加">${favs.has(d.id) ? "★" : "☆"}</button></td>
+        <td class="nm">${d.n}<br><span style="font-size:11.5px;color:var(--ink-faint)">${d.copy}</span></td>
+        <td class="num">${d.area}</td>
+        <td class="num">${d.kind.join("・")}</td>
+        <td class="num">${d.dec}</td>
+        <td class="num">${d.time}</td>
+        <td class="num">${d.cost}</td>
+        <td class="num">${d.tourist}</td>
+        <td class="num">${d.io}</td>
+      </tr>`).join("");
+  }
+
+  document.querySelectorAll(".star").forEach(s => {
+    s.onclick = () => {
+      const id = s.dataset.id;
+      if (favs.has(id)) favs.delete(id); else favs.add(id);
+      saveFavs();
+      render();
+    };
+  });
+
+  syncCarry();
+}
+
+/* ---------- map ---------- */
+const mapbox = document.getElementById("mapbox");
+const mapsvg = document.getElementById("mapsvg");
+/* 緯度が上がるほど経度1度は短くなる。中緯度の係数をかけて形を実物に近づける */
+const LON_K = 0.82;
+const proj = (lon, lat) => [lon * LON_K, -lat];
+const toPath = pts => "M" + pts.map(p => proj(p[0], p[1]).map(v => v.toFixed(2)).join(" ")).join("L") + "Z";
+document.getElementById("mainland").setAttribute("d", toPath(BORDER));
+document.getElementById("hainanIsle").setAttribute("d", toPath(HAINAN));
+
+const nodeEls = NODES.map(n => {
+  const el = document.createElement("div");
+  el.className = "node " + n.s;
+  el.innerHTML = `<span class="dot"></span><span>${n.l}</span>`;
+  mapbox.appendChild(el);
+  return el;
+});
+
+/* 横長なら中国全土、縦長なら東側に寄せて描く */
+function fitMap() {
+  const w = mapbox.clientWidth, h = mapbox.clientHeight;
+  if (!w || !h) return;
+  const ar = w / h;
+  const wide = ar >= 1.45;
+  let x0 = (wide ? 73 : 96) * LON_K, x1 = 136 * LON_K;
+  let y0 = wide ? -54.5 : -48, y1 = -14.5;
+  const bw = x1 - x0, bh = y1 - y0;
+  if (bw / bh < ar) { const d = (bh * ar - bw) / 2; x0 -= d; x1 += d; }
+  else { y0 -= bw / ar - bh; }   // 余りは北側（内モンゴル・黒龍江）に逃がす
+  mapsvg.setAttribute("viewBox", `${x0} ${y0} ${x1 - x0} ${y1 - y0}`);
+  NODES.forEach((n, i) => {
+    const [x, y] = proj(n.lon, n.lat);
+    nodeEls[i].style.left = ((x - x0) / (x1 - x0) * 100) + "%";
+    nodeEls[i].style.top = ((y - y0) / (y1 - y0) * 100) + "%";
+  });
+}
+addEventListener("resize", fitMap);
+
+document.getElementById("times").innerHTML = TIMES.map(t => `<div>${t[0]}<b>${t[1]}</b></div>`).join("");
+
+/* ---------- controls ---------- */
+document.getElementById("q").oninput = render;
+document.getElementById("favOnly").onclick = e => {
+  favOnly = !favOnly; e.currentTarget.setAttribute("aria-pressed", favOnly); render();
+};
+document.getElementById("reset").onclick = () => {
+  Object.values(sel).forEach(s => s.clear());
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed","false"));
+  document.getElementById("q").value = "";
+  favOnly = false; document.getElementById("favOnly").setAttribute("aria-pressed","false");
+  render();
+};
+/* ---------- ☆の控え（保存が効かない環境の逃げ道） ---------- */
+const carry = document.getElementById("carry");
+const carryText = document.getElementById("carryText");
+const carryNote = document.getElementById("carryNote");
+const carryMsg = document.getElementById("carryMsg");
+const carryBtn = document.getElementById("carryBtn");
+
+/* 保存が残ると確認できていないうちは、控えを取るよう促す */
+const KEEP = "下のファイル保存かコピー";
+const RISKY = !STORE_OK || !PERSIST_PROVEN;
+carryNote.textContent =
+  !STORE_OK
+    ? "このブラウザは☆の保存自体を拒否しています。タブを閉じると消えるので、" + KEEP + "で控えてください。"
+  : !PERSIST_PROVEN
+    ? (EMBEDDED
+        ? "☆がタブを閉じたあとも残るか、まだ確認できていません。このページは埋め込み表示で、Safari では埋め込み内の保存がタブを閉じた時点で破棄されます。確実に残すには、" + KEEP + "で控えるか、このページを別タブで直接開いてください。"
+        : "☆がタブを閉じたあとも残るか、まだ確認できていません。一度閉じて開き直すと確認できます。それまでは" + KEEP + "で控えておくと安全です。")
+    : "☆はこのブラウザに保存されており、タブを閉じても残ることを確認済みです。別の端末やブラウザに移すときは、" + KEEP + "を使ってください。";
+carryNote.classList.toggle("warn", RISKY);
+if (RISKY) carryBtn.classList.add("warn");
+
+function syncCarry() {
+  if (carry.classList.contains("hidden")) return;
+  if (document.activeElement === carryText) return;   // 編集中は上書きしない
+  carryText.value = DATA.filter(d => favs.has(d.id)).map(d => d.n).join("\n");
+}
+carryBtn.onclick = () => {
+  const open = !carry.classList.toggle("hidden");
+  carryBtn.setAttribute("aria-pressed", open);
+  carryMsg.textContent = "";
+  syncCarry();
+};
+/* ファイルに保存（サンドボックス外なので通常のダウンロードが使える） */
+const carrySave = document.getElementById("carrySave");
+carrySave.onclick = () => {
+  if (!carryText.value.trim()) { carryMsg.textContent = "☆がまだ付いていません"; return; }
+  const url = URL.createObjectURL(new Blob([carryText.value + "\n"], { type: "text/plain;charset=utf-8" }));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "中国旅行_気になる体験.txt";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  carryMsg.textContent = "保存しました";
+};
+
+/* ファイルから復元 */
+const carryFile = document.getElementById("carryFile");
+document.getElementById("carryLoad").onclick = () => carryFile.click();
+carryFile.onchange = () => {
+  const f = carryFile.files && carryFile.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    carryText.value = String(r.result || "").trim();
+    document.getElementById("carryApply").onclick();
+  };
+  r.onerror = () => { carryMsg.textContent = "ファイルを読めませんでした"; };
+  r.readAsText(f);
+  carryFile.value = "";
+};
+
+/* 選択をURLにして渡す */
+document.getElementById("carryUrl").onclick = async () => {
+  if (!favs.size) { carryMsg.textContent = "☆がまだ付いていません"; return; }
+  const url = location.origin + location.pathname + "#f=" + encodeFavs();
+  try {
+    await navigator.clipboard.writeText(url);
+    carryMsg.textContent = "URLをコピーしました。相手に送れば同じ☆が開きます";
+  } catch (e) {
+    carryText.value = url;
+    carryText.select();
+    carryMsg.textContent = "上の欄にURLを出しました。⌘Cでコピーしてください";
+  }
+};
+
+document.getElementById("carryCopy").onclick = async () => {
+  carryText.select();
+  try {
+    await navigator.clipboard.writeText(carryText.value);
+    carryMsg.textContent = "コピーしました";
+  } catch (e) {
+    carryMsg.textContent = "選択しました。⌘C でコピーしてください";
+  }
+};
+document.getElementById("carryApply").onclick = () => {
+  const names = new Set(DATA.map(d => d.n));
+  const lines = carryText.value.split("\n").map(v => v.trim()).filter(Boolean);
+  const picked = lines.filter(v => names.has(v));
+  const dropped = lines.length - picked.length;
+  favs = new Set(picked);
+  saveFavs();
+  render();
+  carryMsg.textContent = picked.length + "件を☆にしました" + (dropped ? "（一致しない" + dropped + "行は無視）" : "");
+};
+
+/* 共有リンクで開かれたときは、そちらの☆を採用する */
+(function readShared() {
+  const m = /[#?&]f=([^&]+)/.exec(location.hash + "&" + location.search.slice(1));
+  if (!m) return;
+  const r = decodeFavs(decodeURIComponent(m[1]));
+  if (r === "stale") {
+    banner("この共有リンクは古い版のものです。候補の一覧が更新されているため、☆は変更していません。", true);
+    return;
+  }
+  if (!r) { banner("共有リンクを読み取れませんでした。", true); return; }
+  favs = new Set(r);
+  saveFavs();
+  banner("共有リンクから " + r.length + " 件の☆を読み込みました。このブラウザに保存済みです。", false);
+})();
+
+const views = { vCard:"card", vTable:"table", vMap:"map" };
+Object.keys(views).forEach(id => {
+  document.getElementById(id).onclick = () => {
+    view = views[id];
+    Object.keys(views).forEach(k => document.getElementById(k).setAttribute("aria-pressed", k === id));
+    document.getElementById("filters").classList.toggle("hidden", view === "map");
+    render();
+    if (view === "map") fitMap();   // 非表示のあいだは寸法が取れないので、表示後に測る
+  };
+});
+document.querySelectorAll("th").forEach(th => {
+  th.onclick = () => {
+    const k = th.dataset.k;
+    if (sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = 1; }
+    document.querySelectorAll("th").forEach(o => o.removeAttribute("aria-sort"));
+    th.setAttribute("aria-sort", sortDir === 1 ? "ascending" : "descending");
+    render();
+  };
+});
+
+render();
+</script>
+</body>
+</html>
