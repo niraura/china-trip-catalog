@@ -2,7 +2,7 @@
 
 12月の中国でできる体験を500件並べたカタログ。場所ではなく「やりたいこと」から行き先を逆算するための道具。
 
-**https://niraura.github.io/china-trip/**
+**https://niraura.github.io/china-trip-catalog/**
 
 ## できること
 
